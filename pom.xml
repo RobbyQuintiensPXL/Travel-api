@@ -16,12 +16,7 @@
     <name>travelapi</name>
 
     <description>API for travelAPI</description>
-
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -71,6 +66,11 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
