@@ -16,7 +16,7 @@
     <name>travelapi</name>
 
     <description>API for travelAPI</description>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

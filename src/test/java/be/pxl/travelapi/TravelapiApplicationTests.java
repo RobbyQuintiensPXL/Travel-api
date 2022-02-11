@@ -1,13 +1,9 @@
 package be.pxl.travelapi;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class TravelapiApplicationTests {
-
-    @Test
-    void contextLoads() {
-    }
 
 }
