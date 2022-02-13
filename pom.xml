@@ -15,6 +15,11 @@
         </plugins>
     </build>
 
+    <properties>
+        <sonar.organization>robbyquintienspxl</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
