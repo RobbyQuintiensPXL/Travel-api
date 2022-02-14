@@ -63,14 +63,14 @@ public class RegionServiceTests {
         assertTrue(regionDtoList.size() == 1);
     }
 
-//    @Test
-//    public void addRegion(){
-//        Country newCountry = new Country();
-//        newCountry.setCountryCode("NL");
-//        Region newRegion = new Region();
-//        when(regionRepository.save(any(Region.class))).thenReturn(newRegion);
-//        CreateRegionResource regionResource = new CreateRegionResource(newRegion.getRegionName(), newCountry.getCountryCode(), null);
-//
-//        regionService.addRegion(regionResource);
-//    }
+    @Test
+    public void addRegion(){
+        Country newCountry = new Country();
+        newCountry.setCountryCode("NL");
+        Region newRegion = new Region();
+        when(regionRepository.save(any(Region.class))).thenReturn(newRegion);
+        CreateRegionResource regionResource = new CreateRegionResource(newRegion.getRegionName(), newCountry.getCountryCode(), null);
+
+        regionService.addRegion(regionResource);
+    }
 }
