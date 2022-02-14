@@ -67,10 +67,10 @@
         </profile>
     </profiles>
 
-    <properties>
-        <sonar.organization>robbyquintienspxl</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    </properties>
+<!--    <properties>-->
+<!--        <sonar.organization>robbyquintienspxl</sonar.organization>-->
+<!--        <sonar.host.url>https://sonarcloud.io</sonar.host.url>-->
+<!--    </properties>-->
 
     <parent>
         <groupId>org.springframework.boot</groupId>
