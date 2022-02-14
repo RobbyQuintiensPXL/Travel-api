@@ -51,26 +51,26 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <sonar.host.url>
-                    https://sonarcloud.io/
-                </sonar.host.url>
-                <sonar.organization>robbyquintienspxl</sonar.organization>
-                <sonar.login>1c4c9de302efa407c2563c6c65f871bfeefcc274</sonar.login>
-            </properties>
-        </profile>
-    </profiles>
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>sonar</id>-->
+<!--            <activation>-->
+<!--                <activeByDefault>true</activeByDefault>-->
+<!--            </activation>-->
+<!--            <properties>-->
+<!--                <sonar.host.url>-->
+<!--                    https://sonarcloud.io/-->
+<!--                </sonar.host.url>-->
+<!--                <sonar.organization>robbyquintienspxl</sonar.organization>-->
+<!--                <sonar.login>1c4c9de302efa407c2563c6c65f871bfeefcc274</sonar.login>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--    </profiles>-->
 
-<!--    <properties>-->
-<!--        <sonar.organization>robbyquintienspxl</sonar.organization>-->
-<!--        <sonar.host.url>https://sonarcloud.io</sonar.host.url>-->
-<!--    </properties>-->
+    <properties>
+        <sonar.organization>robbyquintienspxl</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
