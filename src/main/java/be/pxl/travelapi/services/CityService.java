@@ -34,11 +34,18 @@ public class CityService {
     }
 
     public List<CityDto> getAllCitiesByRegion(String regionName){
-        return cityRepository.findCitiesByRegion_RegionName(regionName).stream().map(CityDto::new).collect(Collectors.toList());
+        List<CityDto> cityDtoList = cityRepository.findCitiesByRegion_RegionName(regionName).stream().map(CityDto::new).collect(Collectors.toList());
+        if(cityDtoList.isEmpty()){
+            throw new BusinessException("Region [" + regionName + "] not found.");
+        }
+        return cityDtoList;
     }
 
     public CityDto getCityByName(String cityName){
         Optional<CityDto> cityDto = cityRepository.findCityByCityName(cityName).map(CityDto::new);
+        if(cityDto.isEmpty()){
+            throw new BusinessException("City [" + cityName + "] not found.");
+        }
         return cityDto.get();
     }
 
