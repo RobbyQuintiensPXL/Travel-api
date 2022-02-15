@@ -20,9 +20,6 @@ public class City {
     @Lob
     private byte[] image;
 
-    @Column(name = "image_url")
-    private String imageUrl;
-
     @Column(name = "top_destination")
     boolean isTopDestination;
 
@@ -59,14 +56,6 @@ public class City {
 
     public void setImage(byte[] image) {
         this.image = image;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public boolean isTopDestination() {

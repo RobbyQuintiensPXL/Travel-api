@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreateRoomResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">travelapi</a> &gt; <a href="index.source.html" class="el_package">be.pxl.travelapi.dto</a> &gt; <span class="el_source">CreateRoomResource.java</span></div><h1>CreateRoomResource.java</h1><pre class="source lang-java linenums">package be.pxl.travelapi.dto;
+
+import com.sun.istack.NotNull;
+
+public class CreateRoomResource {
+
+    @NotNull
+    private final String roomNumber;
+    @NotNull
+    private final String roomType;
+    @NotNull
+    private final int beds;
+    @NotNull
+    private final double pricePerNight;
+
+    public CreateRoomResource(@NotNull String roomNumber, @NotNull String roomType,
+<span class="nc" id="L17">                              @NotNull int beds, @NotNull double pricePerNight) {</span>
+<span class="nc" id="L18">        this.roomNumber = roomNumber;</span>
+<span class="nc" id="L19">        this.roomType = roomType;</span>
+<span class="nc" id="L20">        this.beds = beds;</span>
+<span class="nc" id="L21">        this.pricePerNight = pricePerNight;</span>
+<span class="nc" id="L22">    }</span>
+
+    public String getRoomNumber() {
+<span class="nc" id="L25">        return roomNumber;</span>
+    }
+
+    public String getRoomType() {
+<span class="nc" id="L29">        return roomType;</span>
+    }
+
+    public int getBeds() {
+<span class="nc" id="L33">        return beds;</span>
+    }
+
+    public double getPricePerNight() {
+<span class="nc" id="L37">        return pricePerNight;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

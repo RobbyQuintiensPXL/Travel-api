@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Booking.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">travelapi</a> &gt; <a href="index.source.html" class="el_package">be.pxl.travelapi.models</a> &gt; <span class="el_source">Booking.java</span></div><h1>Booking.java</h1><pre class="source lang-java linenums">package be.pxl.travelapi.models;
+
+import org.apache.tomcat.jni.Local;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+public class Booking {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    private Hotel hotel;
+
+    @OneToOne
+    private Room room;
+
+    @Column(name = &quot;from_date&quot;)
+    private LocalDateTime fromDate;
+
+    @Column(name = &quot;till_date&quot;)
+    private LocalDateTime tillDate;
+
+<span class="fc" id="L27">    public Booking() {</span>
+<span class="fc" id="L28">    }</span>
+
+    public Long getId() {
+<span class="nc" id="L31">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="nc" id="L35">        this.id = id;</span>
+<span class="nc" id="L36">    }</span>
+
+    public Hotel getHotel() {
+<span class="nc" id="L39">        return hotel;</span>
+    }
+
+    public void setHotel(Hotel hotel) {
+<span class="nc" id="L43">        this.hotel = hotel;</span>
+<span class="nc" id="L44">    }</span>
+
+    public Room getRoom() {
+<span class="nc" id="L47">        return room;</span>
+    }
+
+    public void setRoom(Room room) {
+<span class="nc" id="L51">        this.room = room;</span>
+<span class="nc" id="L52">    }</span>
+
+    public LocalDateTime getFromDate() {
+<span class="nc" id="L55">        return fromDate;</span>
+    }
+
+    public void setFromDate(LocalDateTime fromDate) {
+<span class="nc" id="L59">        this.fromDate = fromDate;</span>
+<span class="nc" id="L60">    }</span>
+
+    public LocalDateTime getTillDate() {
+<span class="nc" id="L63">        return tillDate;</span>
+    }
+
+    public void setTillDate(LocalDateTime tillDate) {
+<span class="nc" id="L67">        this.tillDate = tillDate;</span>
+<span class="nc" id="L68">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
