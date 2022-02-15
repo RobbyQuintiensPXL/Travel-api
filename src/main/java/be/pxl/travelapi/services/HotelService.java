@@ -31,15 +31,26 @@ public class HotelService {
     }
 
     public List<HotelDto> getHotelsByCity(String cityName) {
-        return hotelRepository.findHotelsByCity_CityName(cityName).stream().map(HotelDto::new).collect(Collectors.toList());
+        List<HotelDto> hotelDtoList = hotelRepository.findHotelsByCity_CityName(cityName).stream().map(HotelDto::new).collect(Collectors.toList());
+        if(hotelDtoList.isEmpty()){
+            throw new BusinessException("City [" + cityName + "] not found.");
+        }
+        return hotelDtoList;
     }
 
     public List<HotelDto> getHotelsByStars(int stars) {
-        return hotelRepository.findHotelsByStars(stars).stream().map(HotelDto::new).collect(Collectors.toList());
+        List<HotelDto> hotelDtoList = hotelRepository.findHotelsByStars(stars).stream().map(HotelDto::new).collect(Collectors.toList());
+        if(hotelDtoList.isEmpty()){
+            throw new BusinessException("No hotels found with " + stars + " stars");
+        }
+        return hotelDtoList;
     }
 
     public HotelDto getHotelByName(String hotelName) {
         Optional<HotelDto> hotelDto = hotelRepository.findHotelByHotelName(hotelName).map(HotelDto::new);
+        if(hotelDto.isEmpty()){
+            throw new BusinessException("Hotel [" + hotelName + "] not found.");
+        }
         return hotelDto.get();
     }
 

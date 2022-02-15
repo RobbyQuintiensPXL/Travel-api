@@ -24,6 +24,9 @@ public class CountryService {
 
     public CountryDto getCountryByName(String countryName) {
         Optional<CountryDto> foundCountry = countryRepository.findCountryByCountryName(countryName).map(CountryDto::new);
+        if (foundCountry.isEmpty()) {
+            throw new BusinessException("Country [" + countryName + "] not found.");
+        }
         return foundCountry.get();
     }
 

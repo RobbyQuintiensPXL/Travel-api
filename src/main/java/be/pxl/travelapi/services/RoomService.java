@@ -1,6 +1,7 @@
 package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CreateRoomResource;
+import be.pxl.travelapi.dto.HotelDto;
 import be.pxl.travelapi.dto.RoomDto;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.Hotel;
@@ -29,11 +30,19 @@ public class RoomService {
     }
 
     public List<RoomDto> getRoomsByHotel(String hotelName){
-        return roomRepository.findRoomsByHotel_HotelName(hotelName).stream().map(RoomDto::new).collect(Collectors.toList());
+        List<RoomDto> roomDtoList = roomRepository.findRoomsByHotel_HotelName(hotelName).stream().map(RoomDto::new).collect(Collectors.toList());
+        if(roomDtoList.isEmpty()){
+            throw new BusinessException("Hotel [" + hotelName + "] not found.");
+        }
+        return roomDtoList;
     }
 
     public List<RoomDto> getRoomsByHotelId(Long id){
-        return roomRepository.findRoomsByHotel_Id(id).stream().map(RoomDto::new).collect(Collectors.toList());
+        List<RoomDto> roomDtoList = roomRepository.findRoomsByHotel_Id(id).stream().map(RoomDto::new).collect(Collectors.toList());
+        if(roomDtoList.isEmpty()){
+            throw new BusinessException("Hotel with id [" + id + "] not found.");
+        }
+        return roomDtoList;
     }
 
     public void addRoomToHotel(Long id, CreateRoomResource roomResource){
