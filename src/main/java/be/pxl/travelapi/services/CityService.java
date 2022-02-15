@@ -51,6 +51,9 @@ public class CityService {
 
     public CityDto getCityById(Long id){
         Optional<CityDto> cityDto = cityRepository.findCityById(id).map(CityDto::new);
+        if(cityDto.isEmpty()){
+            throw new BusinessException("City with id [" + id + "] not found.");
+        }
         return cityDto.get();
     }
 
