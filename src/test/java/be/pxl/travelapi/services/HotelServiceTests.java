@@ -8,7 +8,6 @@ import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Room;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.HotelRepository;
-import be.pxl.travelapi.repository.RegionRepository;
 import be.pxl.travelapi.repository.RoomRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,11 +18,9 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.validation.constraints.AssertTrue;
 import java.io.IOException;
 import java.util.*;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;

@@ -5,7 +5,6 @@ import com.sun.istack.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Set;
 
 public class CreateHotelResource {
 
