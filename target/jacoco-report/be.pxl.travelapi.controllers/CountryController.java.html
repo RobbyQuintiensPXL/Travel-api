@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CountryController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">travelapi</a> &gt; <a href="index.source.html" class="el_package">be.pxl.travelapi.controllers</a> &gt; <span class="el_source">CountryController.java</span></div><h1>CountryController.java</h1><pre class="source lang-java linenums">package be.pxl.travelapi.controllers;
+
+import be.pxl.travelapi.dto.CountryDto;
+import be.pxl.travelapi.dto.CreateCountryResource;
+import be.pxl.travelapi.services.CountryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping(&quot;/countries&quot;)
+@CrossOrigin(origins = &quot;http://localhost:53403&quot;)
+<span class="fc" id="L18">public class CountryController {</span>
+
+    @Autowired
+    private CountryService countryService;
+
+    @GetMapping
+    public ResponseEntity&lt;List&lt;CountryDto&gt;&gt; getAllCountries() {
+<span class="fc" id="L25">        List&lt;CountryDto&gt; countryList = countryService.listAllCountries();</span>
+<span class="fc" id="L26">        return new ResponseEntity&lt;&gt;(countryList, HttpStatus.OK);</span>
+    }
+
+    @GetMapping(&quot;/{countryName}&quot;)
+    public ResponseEntity&lt;CountryDto&gt; getCountryByName(@PathVariable(&quot;countryName&quot;) String countryName) {
+<span class="fc" id="L31">        CountryDto country = countryService.getCountryByName(countryName);</span>
+<span class="fc" id="L32">        return new ResponseEntity&lt;&gt;(country, HttpStatus.OK);</span>
+    }
+
+    @PostMapping
+    public ResponseEntity&lt;Void&gt; addCountry(@RequestBody @Valid CreateCountryResource countryResource){
+<span class="fc" id="L37">        countryService.addCountry(countryResource);</span>
+<span class="fc" id="L38">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
