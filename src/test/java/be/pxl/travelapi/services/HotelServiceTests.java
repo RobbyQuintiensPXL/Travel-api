@@ -21,10 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.constraints.AssertTrue;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -107,7 +104,7 @@ public class HotelServiceTests {
         city.setCityName("TestCity");
         Room room = new Room();
         room.setHotel(hotel);
-        Set<Room> roomList = new HashSet<>();
+        List<Room> roomList = new ArrayList<>();
         roomList.add(room);
         when(roomRepository.save(any(Room.class))).thenReturn(room);
         when(hotelRepository.save(any(Hotel.class))).thenReturn(hotel);
@@ -123,7 +120,7 @@ public class HotelServiceTests {
         MockMultipartFile fileRoomTwo = new MockMultipartFile("user-file",roomTwo,
                 "text/plain", "test data".getBytes());
 
-        CreateHotelResource hotelResource = new CreateHotelResource(any(String.class), any(int.class), city.getCityName(), null, roomList, fileHotel, fileRoomOne, fileRoomTwo, true);
+        CreateHotelResource hotelResource = new CreateHotelResource(any(String.class), any(int.class), city.getCityName(), null, hotel.getRooms(), fileHotel, fileRoomOne, fileRoomTwo, true);
         hotelService.addHotel(hotelResource);
     }
 

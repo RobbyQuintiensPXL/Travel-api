@@ -17,14 +17,14 @@ public class CreateHotelResource {
     private final String city;
     @NotNull
     private final String address;
-    private final Set<Room> rooms;
+    private final List<Room> rooms;
     private final MultipartFile imageHotel;
     private final MultipartFile imageRoomOne;
     private final MultipartFile imageRoomTwo;
     private final boolean isTopHotel;
 
     public CreateHotelResource(@NotNull String hotelName, @NotNull int stars, @NotNull String city,
-                               @NotNull String address, Set<Room> rooms, MultipartFile imageHotel,
+                               @NotNull String address, List<Room> rooms, MultipartFile imageHotel,
                                MultipartFile imageRoomOne, MultipartFile imageRoomTwo, boolean isTopHotel) {
         this.hotelName = hotelName;
         this.stars = stars;
@@ -53,7 +53,7 @@ public class CreateHotelResource {
         return address;
     }
 
-    public Set<Room> getRooms() {
+    public List<Room> getRooms() {
         return rooms;
     }
 
