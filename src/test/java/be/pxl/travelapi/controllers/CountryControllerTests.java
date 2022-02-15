@@ -93,20 +93,7 @@ public class CountryControllerTests {
         .andExpect(status().isCreated());
     }
 
-//    @Test
-//    public void throwCountryAlreadyExistException() throws Exception {
-//        Country country = new Country();
-//        country.setCountryCode("TEST");
-//        country.setCountryName("TestCountry");
-//        CreateCountryResource countryResource = new CreateCountryResource(country.getCountryCode(), country.getCountryName());
-//
-//        mvc.perform(post("/countries")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(asJsonString(countryResource))
-//                .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isCreated());
-//    }
-
+    //TODO make global method
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);

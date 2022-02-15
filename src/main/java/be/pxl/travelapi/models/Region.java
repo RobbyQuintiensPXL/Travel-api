@@ -16,9 +16,6 @@ public class Region {
     @JoinColumn(name = "country_code")
     private Country country;
 
-    @Column(name = "image_url")
-    private String imageUrl;
-
     public Region() {
     }
 
@@ -44,13 +41,5 @@ public class Region {
 
     public void setCountry(Country country) {
         this.country = country;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 }

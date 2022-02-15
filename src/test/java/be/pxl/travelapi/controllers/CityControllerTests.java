@@ -139,6 +139,7 @@ public class CityControllerTests {
 //                .andExpect(status().isCreated());
 //    }
 
+    //TODO make global method
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);

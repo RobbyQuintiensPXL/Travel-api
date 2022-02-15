@@ -8,13 +8,11 @@ public class RegionDto {
     private final Long id;
     private final String regionName;
     private final Country country;
-    private final String imageUrl;
 
     public RegionDto(Region region) {
         this.id = region.getId();
         this.regionName = region.getRegionName();
         this.country = region.getCountry();
-        this.imageUrl = region.getImageUrl();
     }
 
     public String getRegionName() {
@@ -29,7 +27,4 @@ public class RegionDto {
         return country;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
 }

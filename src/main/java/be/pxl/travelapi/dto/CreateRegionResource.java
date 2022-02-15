@@ -8,12 +8,10 @@ public class CreateRegionResource {
     private final String regionName;
     @NotNull
     private final String countryCode;
-    private final String imageUrl;
 
-    public CreateRegionResource(@NotNull String regionName, @NotNull String countryCode, String imageUrl) {
+    public CreateRegionResource(@NotNull String regionName, @NotNull String countryCode) {
         this.regionName = regionName;
         this.countryCode = countryCode;
-        this.imageUrl = imageUrl;
     }
 
     public String getRegionName() {
@@ -22,9 +20,5 @@ public class CreateRegionResource {
 
     public String getCountryCode() {
         return countryCode;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
     }
 }

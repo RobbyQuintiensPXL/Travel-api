@@ -79,7 +79,7 @@ public class RegionServiceTests {
         newRegion.setCountry(newCountry);
         when(countryRepository.findCountryByCountryCode(anyString())).thenReturn(java.util.Optional.of(newCountry));
         when(regionRepository.save(any(Region.class))).thenReturn(newRegion);
-        CreateRegionResource regionResource = new CreateRegionResource(newRegion.getRegionName(), newCountry.getCountryCode(), null);
+        CreateRegionResource regionResource = new CreateRegionResource(newRegion.getRegionName(), newCountry.getCountryCode());
 
         regionService.addRegion(regionResource);
     }
