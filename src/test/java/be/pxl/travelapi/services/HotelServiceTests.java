@@ -5,9 +5,11 @@ import be.pxl.travelapi.dto.CreateHotelResource;
 import be.pxl.travelapi.dto.HotelDto;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
+import be.pxl.travelapi.models.Room;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.HotelRepository;
 import be.pxl.travelapi.repository.RegionRepository;
+import be.pxl.travelapi.repository.RoomRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.constraints.AssertTrue;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -37,6 +41,9 @@ public class HotelServiceTests {
 
     @MockBean
     private CityRepository cityRepository;
+
+    @MockBean
+    private RoomRepository roomRepository;
 
     @Autowired
     private HotelService hotelService;
@@ -98,6 +105,11 @@ public class HotelServiceTests {
         Hotel hotel = new Hotel();
         City city = new City();
         city.setCityName("TestCity");
+        Room room = new Room();
+        room.setHotel(hotel);
+        Set<Room> roomList = new HashSet<>();
+        roomList.add(room);
+        when(roomRepository.save(any(Room.class))).thenReturn(room);
         when(hotelRepository.save(any(Hotel.class))).thenReturn(hotel);
         when(cityRepository.findCityByCityName(any(String.class))).thenReturn(java.util.Optional.of(city));
         String hotelName = "hotelname.jpg";
@@ -111,7 +123,7 @@ public class HotelServiceTests {
         MockMultipartFile fileRoomTwo = new MockMultipartFile("user-file",roomTwo,
                 "text/plain", "test data".getBytes());
 
-        CreateHotelResource hotelResource = new CreateHotelResource(any(String.class), any(int.class), city.getCityName(), null, null, fileHotel, fileRoomOne, fileRoomTwo, true);
+        CreateHotelResource hotelResource = new CreateHotelResource(any(String.class), any(int.class), city.getCityName(), null, roomList, fileHotel, fileRoomOne, fileRoomTwo, true);
         hotelService.addHotel(hotelResource);
     }
 
