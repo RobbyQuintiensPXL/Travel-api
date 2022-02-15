@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: be.pxl.travelapi.services.HotelServiceTests
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.141 s - in be.pxl.travelapi.services.HotelServiceTests
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.297 s - in be.pxl.travelapi.services.HotelServiceTests

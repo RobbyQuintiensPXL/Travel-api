@@ -20,61 +20,50 @@ public class City {
     @Lob
     private byte[] image;
 
-    @Column(name = &quot;image_url&quot;)
-    private String imageUrl;
-
     @Column(name = &quot;top_destination&quot;)
     boolean isTopDestination;
 
-<span class="fc" id="L29">    public City() {</span>
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L26">    public City() {</span>
+<span class="fc" id="L27">    }</span>
 
     public Long getId() {
-<span class="fc" id="L33">        return id;</span>
+<span class="fc" id="L30">        return id;</span>
     }
 
     public void setId(Long id) {
-<span class="fc" id="L37">        this.id = id;</span>
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L34">        this.id = id;</span>
+<span class="fc" id="L35">    }</span>
 
     public String getCityName() {
-<span class="fc" id="L41">        return cityName;</span>
+<span class="fc" id="L38">        return cityName;</span>
     }
 
     public void setCityName(String cityName) {
-<span class="fc" id="L45">        this.cityName = cityName;</span>
-<span class="fc" id="L46">    }</span>
+<span class="fc" id="L42">        this.cityName = cityName;</span>
+<span class="fc" id="L43">    }</span>
 
     public Region getRegion() {
-<span class="fc" id="L49">        return region;</span>
+<span class="fc" id="L46">        return region;</span>
     }
 
     public void setRegion(Region region) {
-<span class="fc" id="L53">        this.region = region;</span>
-<span class="fc" id="L54">    }</span>
+<span class="fc" id="L50">        this.region = region;</span>
+<span class="fc" id="L51">    }</span>
 
     public byte[] getImage() {
-<span class="fc" id="L57">        return image;</span>
+<span class="fc" id="L54">        return image;</span>
     }
 
     public void setImage(byte[] image) {
-<span class="fc" id="L61">        this.image = image;</span>
-<span class="fc" id="L62">    }</span>
-
-    public String getImageUrl() {
-<span class="fc" id="L65">        return imageUrl;</span>
-    }
-
-    public void setImageUrl(String imageUrl) {
-<span class="nc" id="L69">        this.imageUrl = imageUrl;</span>
-<span class="nc" id="L70">    }</span>
+<span class="fc" id="L58">        this.image = image;</span>
+<span class="fc" id="L59">    }</span>
 
     public boolean isTopDestination() {
-<span class="fc" id="L73">        return isTopDestination;</span>
+<span class="fc" id="L62">        return isTopDestination;</span>
     }
 
     public void setTopDestination(boolean topDestination) {
-<span class="fc" id="L77">        isTopDestination = topDestination;</span>
-<span class="fc" id="L78">    }</span>
+<span class="fc" id="L66">        isTopDestination = topDestination;</span>
+<span class="fc" id="L67">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

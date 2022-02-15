@@ -8,37 +8,35 @@ public class CityDto {
     private final Long id;
     private final String cityName;
     private final Region region;
-    private final String imageUrl;
     private final byte[] image;
     private final boolean topDestination;
 
-<span class="fc" id="L15">    public CityDto(City city) {</span>
-<span class="fc" id="L16">        this.id = city.getId();</span>
-<span class="fc" id="L17">        this.cityName = city.getCityName();</span>
-<span class="fc" id="L18">        this.region = city.getRegion();</span>
-<span class="fc" id="L19">        this.imageUrl = city.getImageUrl();</span>
-<span class="fc" id="L20">        this.image = city.getImage();</span>
-<span class="fc" id="L21">        this.topDestination = city.isTopDestination();</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L14">    public CityDto(City city) {</span>
+<span class="fc" id="L15">        this.id = city.getId();</span>
+<span class="fc" id="L16">        this.cityName = city.getCityName();</span>
+<span class="fc" id="L17">        this.region = city.getRegion();</span>
+<span class="fc" id="L18">        this.image = city.getImage();</span>
+<span class="fc" id="L19">        this.topDestination = city.isTopDestination();</span>
+<span class="fc" id="L20">    }</span>
 
     public Long getId() {
-<span class="fc" id="L25">        return id;</span>
+<span class="fc" id="L23">        return id;</span>
     }
 
     public String getCityName() {
-<span class="fc" id="L29">        return cityName;</span>
+<span class="fc" id="L27">        return cityName;</span>
     }
 
     public Region getRegion() {
-<span class="fc" id="L33">        return region;</span>
+<span class="fc" id="L31">        return region;</span>
     }
 
     public byte[] getImage() {
-<span class="fc" id="L37">        return image;</span>
+<span class="fc" id="L35">        return image;</span>
     }
 
     public boolean isTopDestination() {
-<span class="fc" id="L41">        return topDestination;</span>
+<span class="fc" id="L39">        return topDestination;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
