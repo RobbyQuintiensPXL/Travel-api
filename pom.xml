@@ -39,7 +39,7 @@
 
     <properties>
         <sonar.organization>robbyquintienspxl</sonar.organization>
-        <sonar.host.url>localhost:8081</sonar.host.url>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <parent>
