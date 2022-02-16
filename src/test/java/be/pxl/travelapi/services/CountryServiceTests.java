@@ -73,11 +73,16 @@ public class CountryServiceTests {
 
     @Test
     public void throwExceptionCountryNameNotFound(){
-        when(countryRepository.findCountryByCountryName(anyString())).thenThrow(BusinessException.class);
+        when(countryRepository.findCountryByCountryName(anyString()).isEmpty()).thenThrow(BusinessException.class);
     }
 
     @Test
     public void throwExceptionCountryCodeNotFound(){
-        when(countryRepository.findCountryByCountryCode(anyString())).thenThrow(BusinessException.class);
+        when(countryRepository.findCountryByCountryCode(anyString()).isEmpty()).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionCountriesNotFound(){
+        when(countryRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
     }
 }

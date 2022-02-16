@@ -16,42 +16,32 @@ public class Region {
     @JoinColumn(name = &quot;country_code&quot;)
     private Country country;
 
-    @Column(name = &quot;image_url&quot;)
-    private String imageUrl;
-
-<span class="fc" id="L22">    public Region() {</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L19">    public Region() {</span>
+        //Empty constructor
+<span class="fc" id="L21">    }</span>
 
     public Long getId() {
-<span class="fc" id="L26">        return id;</span>
+<span class="fc" id="L24">        return id;</span>
     }
 
     public void setId(Long id) {
-<span class="nc" id="L30">        this.id = id;</span>
-<span class="nc" id="L31">    }</span>
+<span class="nc" id="L28">        this.id = id;</span>
+<span class="nc" id="L29">    }</span>
 
     public String getRegionName() {
-<span class="fc" id="L34">        return regionName;</span>
+<span class="fc" id="L32">        return regionName;</span>
     }
 
     public void setRegionName(String regionName) {
-<span class="fc" id="L38">        this.regionName = regionName;</span>
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L36">        this.regionName = regionName;</span>
+<span class="fc" id="L37">    }</span>
 
     public Country getCountry() {
-<span class="fc" id="L42">        return country;</span>
+<span class="fc" id="L40">        return country;</span>
     }
 
     public void setCountry(Country country) {
-<span class="fc" id="L46">        this.country = country;</span>
-<span class="fc" id="L47">    }</span>
-
-    public String getImageUrl() {
-<span class="fc" id="L50">        return imageUrl;</span>
-    }
-
-    public void setImageUrl(String imageUrl) {
-<span class="nc" id="L54">        this.imageUrl = imageUrl;</span>
-<span class="nc" id="L55">    }</span>
+<span class="fc" id="L44">        this.country = country;</span>
+<span class="fc" id="L45">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

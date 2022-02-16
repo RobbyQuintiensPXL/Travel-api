@@ -102,16 +102,21 @@ public class CityServiceTests {
 
     @Test
     public void throwExceptionCityNameNotFound(){
-        when(cityRepository.findCityByCityName(anyString())).thenThrow(BusinessException.class);
+        when(cityRepository.findCityByCityName(anyString()).isEmpty()).thenThrow(BusinessException.class);
     }
 
     @Test
     public void throwExceptionRegionNotFound(){
-        when(cityRepository.findCitiesByRegion_RegionName(anyString())).thenThrow(BusinessException.class);
+        when(cityRepository.findCitiesByRegion_RegionName(anyString()).isEmpty()).thenThrow(BusinessException.class);
     }
 
     @Test
     public void throwExceptionCityIdNotFound(){
-        when(cityRepository.findCityById(any(Long.class))).thenThrow(BusinessException.class);
+        when(cityRepository.findCityById(any(Long.class)).isEmpty()).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionCitiesNotFound(){
+        when(cityRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
     }
 }

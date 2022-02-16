@@ -3,7 +3,6 @@
 import be.pxl.travelapi.models.Reservation;
 import be.pxl.travelapi.models.User;
 
-import java.util.List;
 import java.util.Set;
 
 public class UserDto {
@@ -14,32 +13,32 @@ public class UserDto {
     private final String emailAddress;
     private final Set&lt;Reservation&gt; reservationList;
 
-<span class="nc" id="L17">    public UserDto(User user){</span>
-<span class="nc" id="L18">        this.id = user.getId();</span>
-<span class="nc" id="L19">        this.firstName = user.getFirstName();</span>
-<span class="nc" id="L20">        this.lastName = user.getLastName();</span>
-<span class="nc" id="L21">        this.emailAddress = user.getEmailAddress();</span>
-<span class="nc" id="L22">        this.reservationList = user.getReservations();</span>
-<span class="nc" id="L23">    }</span>
+<span class="nc" id="L16">    public UserDto(User user){</span>
+<span class="nc" id="L17">        this.id = user.getId();</span>
+<span class="nc" id="L18">        this.firstName = user.getFirstName();</span>
+<span class="nc" id="L19">        this.lastName = user.getLastName();</span>
+<span class="nc" id="L20">        this.emailAddress = user.getEmailAddress();</span>
+<span class="nc" id="L21">        this.reservationList = user.getReservations();</span>
+<span class="nc" id="L22">    }</span>
 
     public Long getId() {
-<span class="nc" id="L26">        return id;</span>
+<span class="nc" id="L25">        return id;</span>
     }
 
     public String getFirstName() {
-<span class="nc" id="L30">        return firstName;</span>
+<span class="nc" id="L29">        return firstName;</span>
     }
 
     public String getLastName() {
-<span class="nc" id="L34">        return lastName;</span>
+<span class="nc" id="L33">        return lastName;</span>
     }
 
     public String getEmailAddress() {
-<span class="nc" id="L38">        return emailAddress;</span>
+<span class="nc" id="L37">        return emailAddress;</span>
     }
 
     public Set&lt;Reservation&gt; getReservationList() {
-<span class="nc" id="L42">        return reservationList;</span>
+<span class="nc" id="L41">        return reservationList;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

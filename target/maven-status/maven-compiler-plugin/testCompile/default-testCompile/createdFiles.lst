@@ -1,12 +1,12 @@
 be\pxl\travelapi\repository\RoomRepositoryTests.class
+be\pxl\travelapi\services\RegionServiceTests.class
+be\pxl\travelapi\repository\RegionRepositoryTests.class
+be\pxl\travelapi\controllers\CountryControllerTests.class
 be\pxl\travelapi\repository\CityRepositoryTests.class
 be\pxl\travelapi\repository\CountryRepositoryTest.class
 be\pxl\travelapi\services\HotelServiceTests.class
 be\pxl\travelapi\services\CityServiceTests.class
 be\pxl\travelapi\services\CountryServiceTests.class
 be\pxl\travelapi\repository\HotelRepositoryTests.class
-be\pxl\travelapi\services\RegionServiceTests.class
-be\pxl\travelapi\repository\RegionRepositoryTests.class
 be\pxl\travelapi\TravelapiApplicationTests.class
 be\pxl\travelapi\controllers\CityControllerTests.class
-be\pxl\travelapi\controllers\CountryControllerTests.class

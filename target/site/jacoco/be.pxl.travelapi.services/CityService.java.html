@@ -7,21 +7,16 @@ import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.RegionRepository;
-import be.pxl.travelapi.utils.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-<span class="fc" id="L24">public class CityService {</span>
+<span class="fc" id="L19">public class CityService {</span>
 
     @Autowired
     private CityRepository cityRepository;
@@ -29,42 +24,54 @@ import java.util.stream.Collectors;
     @Autowired
     private RegionRepository regionRepository;
 
+    private final static String NOT_FOUND = &quot;] not found&quot;;
+
     public List&lt;CityDto&gt; getAllCities(){
-<span class="nc" id="L33">        return cityRepository.findAll().stream().map(CityDto::new).collect(Collectors.toList());</span>
+<span class="nc" id="L30">        return cityRepository.findAll().stream().map(CityDto::new).collect(Collectors.toList());</span>
     }
 
     public List&lt;CityDto&gt; getAllCitiesByRegion(String regionName){
-<span class="fc" id="L37">        return cityRepository.findCitiesByRegion_RegionName(regionName).stream().map(CityDto::new).collect(Collectors.toList());</span>
+<span class="fc" id="L34">        List&lt;CityDto&gt; cityDtoList = cityRepository.findCitiesByRegion_RegionName(regionName).stream().map(CityDto::new).collect(Collectors.toList());</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if(cityDtoList.isEmpty()){</span>
+<span class="nc" id="L36">            throw new BusinessException(&quot;Region [&quot; + regionName + NOT_FOUND);</span>
+        }
+<span class="fc" id="L38">        return cityDtoList;</span>
     }
 
     public CityDto getCityByName(String cityName){
-<span class="fc" id="L41">        Optional&lt;CityDto&gt; cityDto = cityRepository.findCityByCityName(cityName).map(CityDto::new);</span>
-<span class="fc" id="L42">        return cityDto.get();</span>
+<span class="fc" id="L42">        Optional&lt;CityDto&gt; cityDto = cityRepository.findCityByCityName(cityName).map(CityDto::new);</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if(cityDto.isEmpty()){</span>
+<span class="nc" id="L44">            throw new BusinessException(&quot;City [&quot; + cityName + NOT_FOUND);</span>
+        }
+<span class="fc" id="L46">        return cityDto.get();</span>
     }
 
     public CityDto getCityById(Long id){
-<span class="fc" id="L46">        Optional&lt;CityDto&gt; cityDto = cityRepository.findCityById(id).map(CityDto::new);</span>
-<span class="fc" id="L47">        return cityDto.get();</span>
+<span class="fc" id="L50">        Optional&lt;CityDto&gt; cityDto = cityRepository.findCityById(id).map(CityDto::new);</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        if(cityDto.isEmpty()){</span>
+<span class="nc" id="L52">            throw new BusinessException(&quot;City with id [&quot; + id + NOT_FOUND);</span>
+        }
+<span class="fc" id="L54">        return cityDto.get();</span>
     }
 
     public void addCity(CreateCityResource cityResource) throws IOException {
-<span class="fc" id="L51">        Optional&lt;Region&gt; foundRegion = regionRepository.findRegionByRegionName(cityResource.getRegion());</span>
-<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if(foundRegion.isEmpty()){</span>
-<span class="nc" id="L53">            throw new BusinessException(&quot;Region [&quot; + cityResource.getRegion() + &quot;] not found.&quot;);</span>
+<span class="fc" id="L58">        Optional&lt;Region&gt; foundRegion = regionRepository.findRegionByRegionName(cityResource.getRegion());</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if(foundRegion.isEmpty()){</span>
+<span class="nc" id="L60">            throw new BusinessException(&quot;Region [&quot; + cityResource.getRegion() + NOT_FOUND);</span>
         }
 
-<span class="fc" id="L56">        Optional&lt;City&gt; foundCity = cityRepository.findCityByCityName(cityResource.getCityName());</span>
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if(foundCity.isPresent()){</span>
-<span class="nc" id="L58">            throw new BusinessException(&quot;City [&quot; + cityResource.getCityName() + &quot;] already listed.&quot;);</span>
+<span class="fc" id="L63">        Optional&lt;City&gt; foundCity = cityRepository.findCityByCityName(cityResource.getCityName());</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if(foundCity.isPresent()){</span>
+<span class="nc" id="L65">            throw new BusinessException(&quot;City [&quot; + cityResource.getCityName() + &quot;] already listed.&quot;);</span>
         }
 
-<span class="fc" id="L61">        City city = new City();</span>
-<span class="fc" id="L62">        city.setCityName(cityResource.getCityName());</span>
-<span class="fc" id="L63">        city.setRegion(foundRegion.get());</span>
-<span class="fc" id="L64">        city.setImage(cityResource.getImage().getBytes());</span>
-<span class="fc" id="L65">        city.setTopDestination(cityResource.isTopDestination());</span>
+<span class="fc" id="L68">        City city = new City();</span>
+<span class="fc" id="L69">        city.setCityName(cityResource.getCityName());</span>
+<span class="fc" id="L70">        city.setRegion(foundRegion.get());</span>
+<span class="fc" id="L71">        city.setImage(cityResource.getImage().getBytes());</span>
+<span class="fc" id="L72">        city.setTopDestination(cityResource.isTopDestination());</span>
 
-<span class="fc" id="L67">        cityRepository.save(city);</span>
-<span class="fc" id="L68">    }</span>
+<span class="fc" id="L74">        cityRepository.save(city);</span>
+<span class="fc" id="L75">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -88,11 +88,16 @@ public class RegionServiceTests {
 
     @Test
     public void throwExceptionRegionNameNotFound(){
-        when(regionRepository.findRegionByRegionName(anyString())).thenThrow(BusinessException.class);
+        when(regionRepository.findRegionByRegionName(anyString()).isEmpty()).thenThrow(BusinessException.class);
     }
 
     @Test
     public void throwExceptionRegionByCountryNotFound(){
-        when(regionRepository.findRegionsByCountry_CountryCode(anyString())).thenThrow(BusinessException.class);
+        when(regionRepository.findRegionsByCountry_CountryCode(anyString()).isEmpty()).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionRegionsNotFound(){
+        when(regionRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
     }
 }

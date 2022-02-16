@@ -8,29 +8,24 @@ public class RegionDto {
     private final Long id;
     private final String regionName;
     private final Country country;
-    private final String imageUrl;
 
-<span class="fc" id="L13">    public RegionDto(Region region) {</span>
-<span class="fc" id="L14">        this.id = region.getId();</span>
-<span class="fc" id="L15">        this.regionName = region.getRegionName();</span>
-<span class="fc" id="L16">        this.country = region.getCountry();</span>
-<span class="fc" id="L17">        this.imageUrl = region.getImageUrl();</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L12">    public RegionDto(Region region) {</span>
+<span class="fc" id="L13">        this.id = region.getId();</span>
+<span class="fc" id="L14">        this.regionName = region.getRegionName();</span>
+<span class="fc" id="L15">        this.country = region.getCountry();</span>
+<span class="fc" id="L16">    }</span>
 
     public String getRegionName() {
-<span class="fc" id="L21">        return regionName;</span>
+<span class="fc" id="L19">        return regionName;</span>
     }
 
     public Long getId() {
-<span class="nc" id="L25">        return id;</span>
+<span class="fc" id="L23">        return id;</span>
     }
 
     public Country getCountry() {
-<span class="nc" id="L29">        return country;</span>
+<span class="fc" id="L27">        return country;</span>
     }
 
-    public String getImageUrl() {
-<span class="nc" id="L33">        return imageUrl;</span>
-    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -2,7 +2,6 @@
 
 import be.pxl.travelapi.dto.CreateRegionResource;
 import be.pxl.travelapi.dto.RegionDto;
-import be.pxl.travelapi.models.Country;
 import be.pxl.travelapi.services.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,33 +14,33 @@ import java.util.List;
 @RestController
 @RequestMapping(&quot;/regions&quot;)
 @CrossOrigin(origins = &quot;http://localhost:53403&quot;)
-<span class="fc" id="L18">public class RegionController {</span>
+<span class="fc" id="L17">public class RegionController {</span>
 
     @Autowired
     private RegionService regionService;
 
     @GetMapping
     public ResponseEntity&lt;List&lt;RegionDto&gt;&gt; getAllRegions(){
-<span class="nc" id="L25">        List&lt;RegionDto&gt; regionList = regionService.listAllRegions();</span>
-<span class="nc" id="L26">        return new ResponseEntity&lt;&gt;(regionList, HttpStatus.OK);</span>
+<span class="fc" id="L24">        List&lt;RegionDto&gt; regionList = regionService.listAllRegions();</span>
+<span class="fc" id="L25">        return new ResponseEntity&lt;&gt;(regionList, HttpStatus.OK);</span>
     }
 
     @GetMapping(&quot;/country/{countryCode}&quot;)
     public ResponseEntity&lt;List&lt;RegionDto&gt;&gt; getRegionsByCountry(@PathVariable(&quot;countryCode&quot;)String countryCode){
-<span class="nc" id="L31">        List&lt;RegionDto&gt; regionList = regionService.listRegionsByCountry(countryCode);</span>
-<span class="nc" id="L32">        return new ResponseEntity&lt;&gt;(regionList, HttpStatus.OK);</span>
+<span class="fc" id="L30">        List&lt;RegionDto&gt; regionList = regionService.listRegionsByCountry(countryCode);</span>
+<span class="fc" id="L31">        return new ResponseEntity&lt;&gt;(regionList, HttpStatus.OK);</span>
     }
 
     @GetMapping(&quot;/{regionName}&quot;)
     public ResponseEntity&lt;RegionDto&gt; getRegionByName(@PathVariable(&quot;regionName&quot;) String regionName){
-<span class="nc" id="L37">        RegionDto regionDto = regionService.getRegionByName(regionName);</span>
-<span class="nc" id="L38">        return new ResponseEntity&lt;&gt;(regionDto, HttpStatus.OK);</span>
+<span class="fc" id="L36">        RegionDto regionDto = regionService.getRegionByName(regionName);</span>
+<span class="fc" id="L37">        return new ResponseEntity&lt;&gt;(regionDto, HttpStatus.OK);</span>
     }
     
     @PostMapping
     public ResponseEntity&lt;Void&gt; addRegion(@RequestBody @Valid CreateRegionResource regionResource){
-<span class="nc" id="L43">        regionService.addRegion(regionResource);</span>
-<span class="nc" id="L44">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
+<span class="fc" id="L42">        regionService.addRegion(regionResource);</span>
+<span class="fc" id="L43">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

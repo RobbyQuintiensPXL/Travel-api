@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="be.pxl.travelapi.repository.HotelRepositoryTests" time="7.938" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="be.pxl.travelapi.controllers.RegionControllerTests" time="1.407" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="13"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -55,10 +55,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="57.0"/>
   </properties>
-  <testcase name="showHotelsbyCityName" classname="be.pxl.travelapi.repository.HotelRepositoryTests" time="1.578"/>
-  <testcase name="showHotelsByCityNameAndStars" classname="be.pxl.travelapi.repository.HotelRepositoryTests" time="1.362"/>
-  <testcase name="showAllHotels" classname="be.pxl.travelapi.repository.HotelRepositoryTests" time="1.844"/>
-  <testcase name="showHotelsByStars" classname="be.pxl.travelapi.repository.HotelRepositoryTests" time="2.074"/>
-  <testcase name="showHotelByName" classname="be.pxl.travelapi.repository.HotelRepositoryTests" time="0.574"/>
-  <testcase name="showHotelsByHotelNameAndCityName" classname="be.pxl.travelapi.repository.HotelRepositoryTests" time="0.475"/>
+  <testcase name="getAllRegions" classname="be.pxl.travelapi.controllers.RegionControllerTests" time="0.015"/>
+  <testcase name="getRegionByName" classname="be.pxl.travelapi.controllers.RegionControllerTests" time="0.016"/>
+  <testcase name="getRegionsByCountry" classname="be.pxl.travelapi.controllers.RegionControllerTests" time="0.016"/>
+  <testcase name="postRegion" classname="be.pxl.travelapi.controllers.RegionControllerTests" time="0.031"/>
 </testsuite>

@@ -4,7 +4,6 @@ import be.pxl.travelapi.dto.CreateHotelResource;
 import be.pxl.travelapi.dto.CreateRoomResource;
 import be.pxl.travelapi.dto.HotelDto;
 import be.pxl.travelapi.dto.RoomDto;
-import be.pxl.travelapi.models.Room;
 import be.pxl.travelapi.services.HotelService;
 import be.pxl.travelapi.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping(&quot;/hotels&quot;)
 @CrossOrigin(origins = &quot;http://localhost:53403&quot;)
-<span class="fc" id="L22">public class HotelController {</span>
+<span class="fc" id="L21">public class HotelController {</span>
 
     @Autowired
     private HotelService hotelService;
@@ -29,52 +28,52 @@ import java.util.List;
 
     @GetMapping
     public ResponseEntity&lt;List&lt;HotelDto&gt;&gt; getAllHotels(){
-<span class="nc" id="L32">        List&lt;HotelDto&gt; hotelDtoList = hotelService.getAllHotels();</span>
-<span class="nc" id="L33">        return new ResponseEntity&lt;&gt;(hotelDtoList, HttpStatus.OK);</span>
+<span class="nc" id="L31">        List&lt;HotelDto&gt; hotelDtoList = hotelService.getAllHotels();</span>
+<span class="nc" id="L32">        return new ResponseEntity&lt;&gt;(hotelDtoList, HttpStatus.OK);</span>
     }
 
     @GetMapping(&quot;/city/{cityName}&quot;)
     public ResponseEntity&lt;List&lt;HotelDto&gt;&gt; getHotelsByCity(@PathVariable(&quot;cityName&quot;) String cityName){
-<span class="nc" id="L38">        List&lt;HotelDto&gt; hotelDtoList = hotelService.getHotelsByCity(cityName);</span>
-<span class="nc" id="L39">        return new ResponseEntity&lt;&gt;(hotelDtoList, HttpStatus.OK);</span>
+<span class="nc" id="L37">        List&lt;HotelDto&gt; hotelDtoList = hotelService.getHotelsByCity(cityName);</span>
+<span class="nc" id="L38">        return new ResponseEntity&lt;&gt;(hotelDtoList, HttpStatus.OK);</span>
     }
 
     @GetMapping(&quot;/stars/{stars}&quot;)
     public ResponseEntity&lt;List&lt;HotelDto&gt;&gt; getHotelsByStars(@PathVariable(&quot;stars&quot;) int stars){
-<span class="nc" id="L44">        List&lt;HotelDto&gt; hotelDtoList = hotelService.getHotelsByStars(stars);</span>
-<span class="nc" id="L45">        return new ResponseEntity&lt;&gt;(hotelDtoList, HttpStatus.OK);</span>
+<span class="nc" id="L43">        List&lt;HotelDto&gt; hotelDtoList = hotelService.getHotelsByStars(stars);</span>
+<span class="nc" id="L44">        return new ResponseEntity&lt;&gt;(hotelDtoList, HttpStatus.OK);</span>
     }
 
     @GetMapping(&quot;/{hotelName}&quot;)
     public ResponseEntity&lt;HotelDto&gt; getHotelByName(@PathVariable(&quot;hotelName&quot;) String hotelName){
-<span class="nc" id="L50">        HotelDto hotelDto = hotelService.getHotelByName(hotelName);</span>
-<span class="nc" id="L51">        return new ResponseEntity&lt;&gt;(hotelDto, HttpStatus.OK);</span>
+<span class="nc" id="L49">        HotelDto hotelDto = hotelService.getHotelByName(hotelName);</span>
+<span class="nc" id="L50">        return new ResponseEntity&lt;&gt;(hotelDto, HttpStatus.OK);</span>
     }
 
     @GetMapping(&quot;/{cityName}/{stars}&quot;)
     public ResponseEntity&lt;List&lt;HotelDto&gt;&gt; getHotelsByCityAndStars(@PathVariable(&quot;cityName&quot;) String cityName,
                                                                   @PathVariable(&quot;stars&quot;) int stars){
-<span class="nc" id="L57">        List&lt;HotelDto&gt; hotelDtoList = hotelService.getHotelByCityAndStars(cityName, stars);</span>
-<span class="nc" id="L58">        return new ResponseEntity&lt;&gt;(hotelDtoList, HttpStatus.OK);</span>
+<span class="nc" id="L56">        List&lt;HotelDto&gt; hotelDtoList = hotelService.getHotelByCityAndStars(cityName, stars);</span>
+<span class="nc" id="L57">        return new ResponseEntity&lt;&gt;(hotelDtoList, HttpStatus.OK);</span>
     }
 
     @PostMapping(consumes = { &quot;multipart/form-data&quot; })
     public ResponseEntity&lt;Void&gt; addHotel(@ModelAttribute @Valid CreateHotelResource hotelResource) throws IOException {
-<span class="nc" id="L63">        hotelService.addHotel(hotelResource);</span>
-<span class="nc" id="L64">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
+<span class="nc" id="L62">        hotelService.addHotel(hotelResource);</span>
+<span class="nc" id="L63">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
     }
 
     @GetMapping(&quot;/{hotelid}/rooms&quot;)
     public ResponseEntity&lt;List&lt;RoomDto&gt;&gt; getRoomsByHotel(@PathVariable(&quot;hotelid&quot;) Long id){
-<span class="nc" id="L69">        List&lt;RoomDto&gt; roomDtoList = roomService.getRoomsByHotelId(id);</span>
-<span class="nc" id="L70">        return new ResponseEntity&lt;&gt;(roomDtoList, HttpStatus.OK);</span>
+<span class="nc" id="L68">        List&lt;RoomDto&gt; roomDtoList = roomService.getRoomsByHotelId(id);</span>
+<span class="nc" id="L69">        return new ResponseEntity&lt;&gt;(roomDtoList, HttpStatus.OK);</span>
     }
 
     @PostMapping(&quot;/{hotelid}/addroom&quot;)
     public ResponseEntity&lt;Void&gt; addRoomToHotel(@PathVariable(&quot;hotelid&quot;) Long hotelId,
                                                @RequestBody @Valid CreateRoomResource roomResource){
-<span class="nc" id="L76">        roomService.addRoomToHotel(hotelId, roomResource);</span>
-<span class="nc" id="L77">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
+<span class="nc" id="L75">        roomService.addRoomToHotel(hotelId, roomResource);</span>
+<span class="nc" id="L76">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
     }
 
 }

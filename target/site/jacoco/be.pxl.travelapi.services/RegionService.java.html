@@ -32,25 +32,29 @@ import java.util.stream.Collectors;
     }
 
     public RegionDto getRegionByName(String regionName){
-<span class="fc" id="L35">        return regionRepository.findRegionByRegionName(regionName).map(RegionDto::new).get();</span>
+<span class="fc" id="L35">        Optional&lt;RegionDto&gt; foundRegion = regionRepository.findRegionByRegionName(regionName).map(RegionDto::new);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if(foundRegion.isEmpty()){</span>
+<span class="nc" id="L37">            throw new BusinessException(&quot;Region [&quot; + regionName + &quot;] not found.&quot;);</span>
+        }
+<span class="fc" id="L39">        return foundRegion.get();</span>
     }
 
     public void addRegion(CreateRegionResource regionResource){
-<span class="fc" id="L39">        Optional&lt;Region&gt; foundRegion = regionRepository.findRegionByRegionName(regionResource.getRegionName());</span>
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if(foundRegion.isPresent()){</span>
-<span class="nc" id="L41">            throw new BusinessException(&quot;Region [&quot; + regionResource.getRegionName() + &quot;] already listed.&quot;);</span>
+<span class="fc" id="L43">        Optional&lt;Region&gt; foundRegion = regionRepository.findRegionByRegionName(regionResource.getRegionName());</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if(foundRegion.isPresent()){</span>
+<span class="nc" id="L45">            throw new BusinessException(&quot;Region [&quot; + regionResource.getRegionName() + &quot;] already listed.&quot;);</span>
         }
 
-<span class="fc" id="L44">        Optional&lt;Country&gt; country = countryRepository.findCountryByCountryCode(regionResource.getCountryCode());</span>
-<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if(country.isEmpty()){</span>
-<span class="nc" id="L46">            throw new BusinessException(&quot;Country [&quot; + regionResource.getRegionName() + &quot;] not found.&quot;);</span>
+<span class="fc" id="L48">        Optional&lt;Country&gt; country = countryRepository.findCountryByCountryCode(regionResource.getCountryCode());</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if(country.isEmpty()){</span>
+<span class="nc" id="L50">            throw new BusinessException(&quot;Country [&quot; + regionResource.getRegionName() + &quot;] not found.&quot;);</span>
         }
 
-<span class="fc" id="L49">        Region region = new Region();</span>
-<span class="fc" id="L50">        region.setRegionName(regionResource.getRegionName());</span>
-<span class="fc" id="L51">        region.setCountry(country.get());</span>
+<span class="fc" id="L53">        Region region = new Region();</span>
+<span class="fc" id="L54">        region.setRegionName(regionResource.getRegionName());</span>
+<span class="fc" id="L55">        region.setCountry(country.get());</span>
 
-<span class="fc" id="L53">        regionRepository.save(region);</span>
-<span class="fc" id="L54">    }</span>
+<span class="fc" id="L57">        regionRepository.save(region);</span>
+<span class="fc" id="L58">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

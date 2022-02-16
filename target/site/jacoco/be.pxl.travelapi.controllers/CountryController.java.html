@@ -10,32 +10,31 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(&quot;/countries&quot;)
 @CrossOrigin(origins = &quot;http://localhost:53403&quot;)
-<span class="fc" id="L18">public class CountryController {</span>
+<span class="fc" id="L17">public class CountryController {</span>
 
     @Autowired
     private CountryService countryService;
 
     @GetMapping
     public ResponseEntity&lt;List&lt;CountryDto&gt;&gt; getAllCountries() {
-<span class="fc" id="L25">        List&lt;CountryDto&gt; countryList = countryService.listAllCountries();</span>
-<span class="fc" id="L26">        return new ResponseEntity&lt;&gt;(countryList, HttpStatus.OK);</span>
+<span class="fc" id="L24">        List&lt;CountryDto&gt; countryList = countryService.listAllCountries();</span>
+<span class="fc" id="L25">        return new ResponseEntity&lt;&gt;(countryList, HttpStatus.OK);</span>
     }
 
     @GetMapping(&quot;/{countryName}&quot;)
     public ResponseEntity&lt;CountryDto&gt; getCountryByName(@PathVariable(&quot;countryName&quot;) String countryName) {
-<span class="fc" id="L31">        CountryDto country = countryService.getCountryByName(countryName);</span>
-<span class="fc" id="L32">        return new ResponseEntity&lt;&gt;(country, HttpStatus.OK);</span>
+<span class="fc" id="L30">        CountryDto country = countryService.getCountryByName(countryName);</span>
+<span class="fc" id="L31">        return new ResponseEntity&lt;&gt;(country, HttpStatus.OK);</span>
     }
 
     @PostMapping
     public ResponseEntity&lt;Void&gt; addCountry(@RequestBody @Valid CreateCountryResource countryResource){
-<span class="fc" id="L37">        countryService.addCountry(countryResource);</span>
-<span class="fc" id="L38">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
+<span class="fc" id="L36">        countryService.addCountry(countryResource);</span>
+<span class="fc" id="L37">        return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
     }
 
 }

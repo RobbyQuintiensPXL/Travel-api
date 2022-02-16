@@ -31,7 +31,6 @@ be\pxl\travelapi\services\HotelService.class
 be\pxl\travelapi\controllers\CityController.class
 be\pxl\travelapi\models\RoomType.class
 be\pxl\travelapi\TravelapiApplication.class
-be\pxl\travelapi\models\Image.class
 be\pxl\travelapi\configuration\Swagger2UiConfiguration.class
 be\pxl\travelapi\controllers\CountryController.class
 be\pxl\travelapi\controllers\HotelController.class

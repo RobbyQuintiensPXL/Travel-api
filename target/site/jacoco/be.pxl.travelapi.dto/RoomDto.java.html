@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RoomDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">travelapi</a> &gt; <a href="index.source.html" class="el_package">be.pxl.travelapi.dto</a> &gt; <span class="el_source">RoomDto.java</span></div><h1>RoomDto.java</h1><pre class="source lang-java linenums">package be.pxl.travelapi.dto;
 
-import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Reservation;
 import be.pxl.travelapi.models.Room;
 import be.pxl.travelapi.models.RoomType;
@@ -16,37 +15,37 @@ public class RoomDto {
     private final double pricePerNight;
     private final Set&lt;Reservation&gt; reservations;
 
-<span class="nc" id="L19">    public RoomDto(Room room) {</span>
-<span class="nc" id="L20">        this.id = room.getId();</span>
-<span class="nc" id="L21">        this.roomNumber = room.getRoomNumber();</span>
-<span class="nc" id="L22">        this.roomType = room.getRoomType();</span>
-<span class="nc" id="L23">        this.beds = room.getBeds();</span>
-<span class="nc" id="L24">        this.pricePerNight = room.getPricePerNight();</span>
-<span class="nc" id="L25">        this.reservations = room.getReservations();</span>
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L18">    public RoomDto(Room room) {</span>
+<span class="nc" id="L19">        this.id = room.getId();</span>
+<span class="nc" id="L20">        this.roomNumber = room.getRoomNumber();</span>
+<span class="nc" id="L21">        this.roomType = room.getRoomType();</span>
+<span class="nc" id="L22">        this.beds = room.getBeds();</span>
+<span class="nc" id="L23">        this.pricePerNight = room.getPricePerNight();</span>
+<span class="nc" id="L24">        this.reservations = room.getReservations();</span>
+<span class="nc" id="L25">    }</span>
 
     public Long getId() {
-<span class="nc" id="L29">        return id;</span>
+<span class="nc" id="L28">        return id;</span>
     }
 
     public String getRoomNumber() {
-<span class="nc" id="L33">        return roomNumber;</span>
+<span class="nc" id="L32">        return roomNumber;</span>
     }
 
     public RoomType getRoomType() {
-<span class="nc" id="L37">        return roomType;</span>
+<span class="nc" id="L36">        return roomType;</span>
     }
 
     public int getBeds() {
-<span class="nc" id="L41">        return beds;</span>
+<span class="nc" id="L40">        return beds;</span>
     }
 
     public double getPricePerNight() {
-<span class="nc" id="L45">        return pricePerNight;</span>
+<span class="nc" id="L44">        return pricePerNight;</span>
     }
 
     public Set&lt;Reservation&gt; getReservations() {
-<span class="nc" id="L49">        return reservations;</span>
+<span class="nc" id="L48">        return reservations;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

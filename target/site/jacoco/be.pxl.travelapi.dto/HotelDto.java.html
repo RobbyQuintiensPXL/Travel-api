@@ -2,11 +2,6 @@
 
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
-import be.pxl.travelapi.models.Region;
-import be.pxl.travelapi.models.Room;
-
-import java.util.List;
-import java.util.Set;
 
 public class HotelDto {
 
@@ -19,47 +14,47 @@ public class HotelDto {
     private final byte[] imageRoomTwo;
     private final boolean isTopHotel;
 
-<span class="fc" id="L22">    public HotelDto(Hotel hotel){</span>
-<span class="fc" id="L23">        this.hotelName = hotel.getHotelName();</span>
-<span class="fc" id="L24">        this.stars = hotel.getStars();</span>
-<span class="fc" id="L25">        this.city = hotel.getCity();</span>
-<span class="fc" id="L26">        this.address = hotel.getAddress();</span>
-<span class="fc" id="L27">        this.imageHotel = hotel.getImageHotel();</span>
-<span class="fc" id="L28">        this.imageRoomOne = hotel.getImageRoomOne();</span>
-<span class="fc" id="L29">        this.imageRoomTwo = hotel.getImageRoomTwo();</span>
-<span class="fc" id="L30">        this.isTopHotel = hotel.isTopHotel();</span>
-<span class="fc" id="L31">    }</span>
+<span class="fc" id="L17">    public HotelDto(Hotel hotel){</span>
+<span class="fc" id="L18">        this.hotelName = hotel.getHotelName();</span>
+<span class="fc" id="L19">        this.stars = hotel.getStars();</span>
+<span class="fc" id="L20">        this.city = hotel.getCity();</span>
+<span class="fc" id="L21">        this.address = hotel.getAddress();</span>
+<span class="fc" id="L22">        this.imageHotel = hotel.getImageHotel();</span>
+<span class="fc" id="L23">        this.imageRoomOne = hotel.getImageRoomOne();</span>
+<span class="fc" id="L24">        this.imageRoomTwo = hotel.getImageRoomTwo();</span>
+<span class="fc" id="L25">        this.isTopHotel = hotel.isTopHotel();</span>
+<span class="fc" id="L26">    }</span>
 
     public String getHotelName() {
-<span class="fc" id="L34">        return hotelName;</span>
+<span class="fc" id="L29">        return hotelName;</span>
     }
 
     public int getStars() {
-<span class="nc" id="L38">        return stars;</span>
+<span class="nc" id="L33">        return stars;</span>
     }
 
     public City getCity() {
-<span class="nc" id="L42">        return city;</span>
+<span class="nc" id="L37">        return city;</span>
     }
 
     public String getAddress() {
-<span class="nc" id="L46">        return address;</span>
+<span class="nc" id="L41">        return address;</span>
     }
 
     public byte[] getImageHotel() {
-<span class="nc" id="L50">        return imageHotel;</span>
+<span class="nc" id="L45">        return imageHotel;</span>
     }
 
     public byte[] getImageRoomOne() {
-<span class="nc" id="L54">        return imageRoomOne;</span>
+<span class="nc" id="L49">        return imageRoomOne;</span>
     }
 
     public byte[] getImageRoomTwo() {
-<span class="nc" id="L58">        return imageRoomTwo;</span>
+<span class="nc" id="L53">        return imageRoomTwo;</span>
     }
 
     public boolean isTopHotel() {
-<span class="nc" id="L62">        return isTopHotel;</span>
+<span class="nc" id="L57">        return isTopHotel;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
