@@ -20,6 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -43,7 +44,7 @@ public class CountryServiceTests {
         when(countryRepository.findAll()).thenReturn(countryList);
 
         List<CountryDto> countries = countryService.listAllCountries();
-        assertTrue(countries.size() == 1);
+        assertEquals(1, countries.size());
     }
 
     @Test
@@ -55,7 +56,7 @@ public class CountryServiceTests {
 
         CountryDto countryDto = countryService.getCountryByName(newCountry.getCountryName());
 
-        assertTrue(countryDto.getCountryName().equals(newCountry.getCountryName()));
+        assertEquals(countryDto.getCountryName(), newCountry.getCountryName());
     }
 
     @Test

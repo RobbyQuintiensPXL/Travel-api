@@ -1,6 +1,6 @@
 package be.pxl.travelapi.dto;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 public class CreateRoomResource {
 

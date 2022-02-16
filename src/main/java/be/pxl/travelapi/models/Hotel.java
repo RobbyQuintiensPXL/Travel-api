@@ -39,6 +39,7 @@ public class Hotel {
     private boolean isTopHotel;
 
     public Hotel() {
+        //Empty constructor
     }
 
     public Long getId() {

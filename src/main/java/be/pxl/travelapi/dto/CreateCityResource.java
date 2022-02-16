@@ -1,10 +1,7 @@
 package be.pxl.travelapi.dto;
 
-import be.pxl.travelapi.models.City;
-import be.pxl.travelapi.models.Region;
-import com.sun.istack.NotNull;
 import org.springframework.web.multipart.MultipartFile;
-
+import javax.validation.constraints.NotNull;
 public class CreateCityResource {
 
     @NotNull

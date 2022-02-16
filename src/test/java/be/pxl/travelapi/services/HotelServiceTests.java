@@ -21,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
 import java.util.*;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -49,7 +50,7 @@ public class HotelServiceTests {
 
         when(hotelRepository.findAll()).thenReturn(hotelList);
 
-        assertTrue(hotelList.size() == 1);
+        assertEquals(1, hotelList.size());
     }
 
     @Test
@@ -59,7 +60,7 @@ public class HotelServiceTests {
         when(hotelRepository.findHotelsByCity_CityName(any())).thenReturn(hotelList);
 
         List<HotelDto> hotelDtoList = hotelService.getHotelsByCity(any());
-        assertTrue(hotelDtoList.size() == 1);
+        assertEquals(1, hotelDtoList.size());
     }
 
     @Test
@@ -69,7 +70,7 @@ public class HotelServiceTests {
         when(hotelRepository.findHotelsByStars(any(int.class))).thenReturn(hotelList);
 
         List<HotelDto> hotelDtoList = hotelService.getHotelsByStars(any(int.class));
-        assertTrue(hotelDtoList.size() == 1);
+        assertEquals(1, hotelDtoList.size());
     }
 
     @Test
@@ -78,7 +79,7 @@ public class HotelServiceTests {
         hotel.setHotelName("Testhotel");
         when(hotelRepository.findHotelByHotelName(any(String.class))).thenReturn(java.util.Optional.of(hotel));
         HotelDto hotelDto = hotelService.getHotelByName(hotel.getHotelName());
-        assertTrue(hotelDto.getHotelName().equals(hotel.getHotelName()));
+        assertEquals(hotelDto.getHotelName(), hotel.getHotelName());
     }
 
     @Test

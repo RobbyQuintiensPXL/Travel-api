@@ -1,7 +1,7 @@
 package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.Room;
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

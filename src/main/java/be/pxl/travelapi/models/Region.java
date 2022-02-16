@@ -17,6 +17,7 @@ public class Region {
     private Country country;
 
     public Region() {
+        //Empty constructor
     }
 
     public Long getId() {

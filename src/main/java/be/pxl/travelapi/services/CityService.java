@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
 @Service
 public class CityService {
 
+    private final static String NOT_FOUND = "] not found";
+
     @Autowired
     private CityRepository cityRepository;
 
@@ -36,7 +38,7 @@ public class CityService {
     public List<CityDto> getAllCitiesByRegion(String regionName){
         List<CityDto> cityDtoList = cityRepository.findCitiesByRegion_RegionName(regionName).stream().map(CityDto::new).collect(Collectors.toList());
         if(cityDtoList.isEmpty()){
-            throw new BusinessException("Region [" + regionName + "] not found.");
+            throw new BusinessException("Region [" + regionName + NOT_FOUND);
         }
         return cityDtoList;
     }
@@ -44,7 +46,7 @@ public class CityService {
     public CityDto getCityByName(String cityName){
         Optional<CityDto> cityDto = cityRepository.findCityByCityName(cityName).map(CityDto::new);
         if(cityDto.isEmpty()){
-            throw new BusinessException("City [" + cityName + "] not found.");
+            throw new BusinessException("City [" + cityName + NOT_FOUND);
         }
         return cityDto.get();
     }
@@ -52,7 +54,7 @@ public class CityService {
     public CityDto getCityById(Long id){
         Optional<CityDto> cityDto = cityRepository.findCityById(id).map(CityDto::new);
         if(cityDto.isEmpty()){
-            throw new BusinessException("City with id [" + id + "] not found.");
+            throw new BusinessException("City with id [" + id + NOT_FOUND);
         }
         return cityDto.get();
     }
@@ -60,7 +62,7 @@ public class CityService {
     public void addCity(CreateCityResource cityResource) throws IOException {
         Optional<Region> foundRegion = regionRepository.findRegionByRegionName(cityResource.getRegion());
         if(foundRegion.isEmpty()){
-            throw new BusinessException("Region [" + cityResource.getRegion() + "] not found.");
+            throw new BusinessException("Region [" + cityResource.getRegion() + NOT_FOUND);
         }
 
         Optional<City> foundCity = cityRepository.findCityByCityName(cityResource.getCityName());

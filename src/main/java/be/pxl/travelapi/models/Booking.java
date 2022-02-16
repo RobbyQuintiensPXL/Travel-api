@@ -25,6 +25,7 @@ public class Booking {
     private LocalDateTime tillDate;
 
     public Booking() {
+        //Empty constructor
     }
 
     public Long getId() {

@@ -25,6 +25,7 @@ public class User {
     private Set<Reservation> reservations;
 
     public User() {
+        //Empty constructor
     }
 
     public Long getId() {

@@ -20,6 +20,8 @@ import java.util.stream.Collectors;
 @Service
 public class HotelService {
 
+    private final static String NOT_FOUND = "] not found";
+
     @Autowired
     private HotelRepository hotelRepository;
 
@@ -33,7 +35,7 @@ public class HotelService {
     public List<HotelDto> getHotelsByCity(String cityName) {
         List<HotelDto> hotelDtoList = hotelRepository.findHotelsByCity_CityName(cityName).stream().map(HotelDto::new).collect(Collectors.toList());
         if(hotelDtoList.isEmpty()){
-            throw new BusinessException("City [" + cityName + "] not found.");
+            throw new BusinessException("City [" + cityName + NOT_FOUND);
         }
         return hotelDtoList;
     }
@@ -49,7 +51,7 @@ public class HotelService {
     public HotelDto getHotelByName(String hotelName) {
         Optional<HotelDto> hotelDto = hotelRepository.findHotelByHotelName(hotelName).map(HotelDto::new);
         if(hotelDto.isEmpty()){
-            throw new BusinessException("Hotel [" + hotelName + "] not found.");
+            throw new BusinessException("Hotel [" + hotelName + NOT_FOUND);
         }
         return hotelDto.get();
     }
@@ -65,7 +67,7 @@ public class HotelService {
         }
         Optional<City> foundCity = cityRepository.findCityByCityName(hotelResource.getCity());
         if (foundCity.isEmpty()) {
-            throw new BusinessException("City [" + hotelResource.getCity() + "] not found.");
+            throw new BusinessException("City [" + hotelResource.getCity() + NOT_FOUND);
         }
 
         Hotel hotel = new Hotel();

@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 @Service
 public class RoomService {
 
+    private final static String NOT_FOUND = "] not found";
+
     @Autowired
     private RoomRepository roomRepository;
 
@@ -32,7 +34,7 @@ public class RoomService {
     public List<RoomDto> getRoomsByHotel(String hotelName){
         List<RoomDto> roomDtoList = roomRepository.findRoomsByHotel_HotelName(hotelName).stream().map(RoomDto::new).collect(Collectors.toList());
         if(roomDtoList.isEmpty()){
-            throw new BusinessException("Hotel [" + hotelName + "] not found.");
+            throw new BusinessException("Hotel [" + hotelName + NOT_FOUND);
         }
         return roomDtoList;
     }
@@ -40,7 +42,7 @@ public class RoomService {
     public List<RoomDto> getRoomsByHotelId(Long id){
         List<RoomDto> roomDtoList = roomRepository.findRoomsByHotel_Id(id).stream().map(RoomDto::new).collect(Collectors.toList());
         if(roomDtoList.isEmpty()){
-            throw new BusinessException("Hotel with id [" + id + "] not found.");
+            throw new BusinessException("Hotel with id [" + id + NOT_FOUND);
         }
         return roomDtoList;
     }
@@ -48,7 +50,7 @@ public class RoomService {
     public void addRoomToHotel(Long id, CreateRoomResource roomResource){
         Optional<Hotel> foundHotel = hotelRepository.findById(id);
         if(foundHotel.isEmpty()){
-            throw new BusinessException("Hotel with ID [" + id + "] not found.");
+            throw new BusinessException("Hotel with ID [" + id + NOT_FOUND);
         }
 
         Room room = new Room();

@@ -1,9 +1,6 @@
 package be.pxl.travelapi.dto;
 
-import be.pxl.travelapi.models.Region;
-import com.sun.istack.NotNull;
-
-import java.util.Set;
+import javax.validation.constraints.NotNull;
 
 public class CreateCountryResource {
 

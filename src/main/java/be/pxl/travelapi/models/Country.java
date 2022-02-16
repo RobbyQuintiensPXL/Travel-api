@@ -15,6 +15,7 @@ public class Country {
     private String countryName;
 
     public Country() {
+        //Empty constructor
     }
 
     public String getCountryName() {

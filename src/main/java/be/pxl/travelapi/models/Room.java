@@ -32,6 +32,7 @@ public class Room {
     private Set<Reservation> reservations;
 
     public Room() {
+        //Empty constructor
     }
 
     public Long getId() {

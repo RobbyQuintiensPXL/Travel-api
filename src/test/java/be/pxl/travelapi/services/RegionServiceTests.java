@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.LinkedList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -48,7 +49,7 @@ public class RegionServiceTests {
         when(regionRepository.findAll()).thenReturn(regionList);
 
         List<RegionDto> regionDtoList = regionService.listAllRegions();
-        assertTrue(regionDtoList.size() == 1);
+        assertEquals(1, regionDtoList.size());
     }
 
     @Test
@@ -58,7 +59,7 @@ public class RegionServiceTests {
         when(regionRepository.findRegionByRegionName(any())).thenReturn(java.util.Optional.of(region));
 
         RegionDto regionDto = regionService.getRegionByName(region.getRegionName());
-        assertTrue(regionDto.getRegionName().equals(region.getRegionName()));
+        assertEquals(regionDto.getRegionName(), region.getRegionName());
     }
 
     @Test
@@ -68,7 +69,7 @@ public class RegionServiceTests {
         when(regionRepository.findRegionsByCountry_CountryCode(any())).thenReturn(regionList);
 
         List<RegionDto> regionDtoList = regionService.listRegionsByCountry("NL");
-        assertTrue(regionDtoList.size() == 1);
+        assertEquals(1, regionDtoList.size());
     }
 
     @Test
@@ -84,9 +85,3 @@ public class RegionServiceTests {
         regionService.addRegion(regionResource);
     }
 }
-
-//    City newCity = new City();
-//    Region region = new Region();
-//        region.setRegionName("Limburg");
-//                when(cityRepository.save(any(City.class))).thenReturn(newCity);
-//        when(regionRepository.findRegionByRegionName(anyString())).thenReturn(java.util.Optional.of(region));

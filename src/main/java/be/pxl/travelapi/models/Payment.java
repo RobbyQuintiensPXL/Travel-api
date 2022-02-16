@@ -20,6 +20,7 @@ public class Payment {
     private Reservation reservation;
 
     public Payment() {
+        //Empty constructor
     }
 
     public Long getId() {

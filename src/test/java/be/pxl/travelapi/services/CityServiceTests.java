@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
@@ -49,7 +49,7 @@ public class CityServiceTests {
 
         when(cityRepository.findAll()).thenReturn(cityList);
 
-        assertTrue(cityList.size() == 1);
+        assertEquals(1, cityList.size());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class CityServiceTests {
 
         CityDto cityDto = cityService.getCityByName(city.getCityName());
 
-        assertTrue(cityDto.getCityName().equals(city.getCityName()));
+        assertEquals(cityDto.getCityName(), city.getCityName());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class CityServiceTests {
 
         CityDto cityDto = cityService.getCityById(city.getId());
 
-        assertTrue(cityDto.getId() == city.getId());
+        assertSame(cityDto.getId(), city.getId());
     }
 
     @Test
@@ -82,7 +82,7 @@ public class CityServiceTests {
         when(cityRepository.findCitiesByRegion_RegionName(any())).thenReturn(cityList);
 
         List<CityDto> cityDtoList = cityService.getAllCitiesByRegion("dd");
-        assertTrue(cityDtoList.size() == 1);
+        assertEquals(1, cityDtoList.size());
     }
 
     @Test
