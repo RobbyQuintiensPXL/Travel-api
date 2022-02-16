@@ -24,6 +24,7 @@ public class City {
     boolean isTopDestination;
 
     public City() {
+        //Empty constructor
     }
 
     public Long getId() {
