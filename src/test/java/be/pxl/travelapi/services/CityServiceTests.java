@@ -2,6 +2,7 @@ package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CityDto;
 import be.pxl.travelapi.dto.CreateCityResource;
+import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CityRepository;
@@ -97,5 +98,20 @@ public class CityServiceTests {
                 "text/plain", "test data".getBytes());
         CreateCityResource cityResource = new CreateCityResource(newCity.getCityName(), region.getRegionName(), file , false);
         cityService.addCity(cityResource);
+    }
+
+    @Test
+    public void throwExceptionCityNameNotFound(){
+        when(cityRepository.findCityByCityName(anyString())).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionRegionNotFound(){
+        when(cityRepository.findCitiesByRegion_RegionName(anyString())).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionCityIdNotFound(){
+        when(cityRepository.findCityById(any(Long.class))).thenThrow(BusinessException.class);
     }
 }

@@ -3,6 +3,7 @@ package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CreateHotelResource;
 import be.pxl.travelapi.dto.HotelDto;
+import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Room;
@@ -24,6 +25,7 @@ import java.util.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -120,6 +122,26 @@ public class HotelServiceTests {
 
         CreateHotelResource hotelResource = new CreateHotelResource(any(String.class), any(int.class), city.getCityName(), null, hotel.getRooms(), fileHotel, fileRoomOne, fileRoomTwo, true);
         hotelService.addHotel(hotelResource);
+    }
+
+    @Test
+    public void throwExceptionHotelNameNotFound(){
+        when(hotelRepository.findHotelByHotelName(anyString())).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionHotelStarsNotFound(){
+        when(hotelRepository.findHotelsByStars(any(int.class))).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionHotelByCityNotFound(){
+        when(hotelRepository.findHotelsByCity_CityName(anyString())).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionHotelByCityAndStarsNotFound(){
+        when(hotelRepository.findHotelsByCity_CityNameAndStars(anyString(), any(int.class))).thenThrow(BusinessException.class);
     }
 
 }

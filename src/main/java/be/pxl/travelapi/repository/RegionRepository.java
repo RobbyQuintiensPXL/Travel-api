@@ -1,6 +1,5 @@
 package be.pxl.travelapi.repository;
 
-import be.pxl.travelapi.models.Country;
 import be.pxl.travelapi.models.Region;
 import org.springframework.data.jpa.repository.JpaRepository;
 

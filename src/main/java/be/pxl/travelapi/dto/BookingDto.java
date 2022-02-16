@@ -1,7 +1,6 @@
 package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.Booking;
-import be.pxl.travelapi.models.Hotel;
 
 import java.time.LocalDateTime;
 

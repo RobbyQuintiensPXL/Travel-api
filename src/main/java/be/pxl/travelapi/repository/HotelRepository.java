@@ -1,7 +1,6 @@
 package be.pxl.travelapi.repository;
 
 import be.pxl.travelapi.models.Hotel;
-import be.pxl.travelapi.models.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

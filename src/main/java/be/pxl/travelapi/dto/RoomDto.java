@@ -1,6 +1,5 @@
 package be.pxl.travelapi.dto;
 
-import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Reservation;
 import be.pxl.travelapi.models.Room;
 import be.pxl.travelapi.models.RoomType;

@@ -83,6 +83,7 @@ public class HotelRepositoryTests {
         assertThat(foundHotel).isNotNull();
         assertThat(foundHotel.get().getHotelName()).isEqualTo(hotel.getHotelName());
         assertThat(foundHotel.get().getCity().getCityName()).isEqualTo(city.getCityName());
+        assertThat(foundHotel.get().getStars()).isEqualTo(hotel.getStars());
     }
 
     @Test

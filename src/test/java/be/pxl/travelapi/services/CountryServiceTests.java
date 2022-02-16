@@ -2,6 +2,7 @@ package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CountryDto;
 import be.pxl.travelapi.dto.CreateCountryResource;
+import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.Country;
 import be.pxl.travelapi.repository.CountryRepository;
 import org.junit.Test;
@@ -23,6 +24,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -67,5 +69,15 @@ public class CountryServiceTests {
         CreateCountryResource countryResource = new CreateCountryResource(newCountry.getCountryName(), newCountry.getCountryCode());
 
         countryService.addCountry(countryResource);
+    }
+
+    @Test
+    public void throwExceptionCountryNameNotFound(){
+        when(countryRepository.findCountryByCountryName(anyString())).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionCountryCodeNotFound(){
+        when(countryRepository.findCountryByCountryCode(anyString())).thenThrow(BusinessException.class);
     }
 }

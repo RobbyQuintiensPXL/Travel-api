@@ -4,7 +4,6 @@ import be.pxl.travelapi.dto.CreateHotelResource;
 import be.pxl.travelapi.dto.CreateRoomResource;
 import be.pxl.travelapi.dto.HotelDto;
 import be.pxl.travelapi.dto.RoomDto;
-import be.pxl.travelapi.models.Room;
 import be.pxl.travelapi.services.HotelService;
 import be.pxl.travelapi.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;

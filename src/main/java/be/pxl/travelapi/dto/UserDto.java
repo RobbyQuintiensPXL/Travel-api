@@ -3,7 +3,6 @@ package be.pxl.travelapi.dto;
 import be.pxl.travelapi.models.Reservation;
 import be.pxl.travelapi.models.User;
 
-import java.util.List;
 import java.util.Set;
 
 public class UserDto {

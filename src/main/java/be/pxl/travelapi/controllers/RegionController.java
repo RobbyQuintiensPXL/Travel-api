@@ -2,7 +2,6 @@ package be.pxl.travelapi.controllers;
 
 import be.pxl.travelapi.dto.CreateRegionResource;
 import be.pxl.travelapi.dto.RegionDto;
-import be.pxl.travelapi.models.Country;
 import be.pxl.travelapi.services.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

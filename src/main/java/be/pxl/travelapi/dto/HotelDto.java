@@ -2,11 +2,6 @@ package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
-import be.pxl.travelapi.models.Region;
-import be.pxl.travelapi.models.Room;
-
-import java.util.List;
-import java.util.Set;
 
 public class HotelDto {
 

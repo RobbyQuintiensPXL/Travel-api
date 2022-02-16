@@ -1,7 +1,6 @@
 package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CreateRoomResource;
-import be.pxl.travelapi.dto.HotelDto;
 import be.pxl.travelapi.dto.RoomDto;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.Hotel;
@@ -19,13 +18,13 @@ import java.util.stream.Collectors;
 @Service
 public class RoomService {
 
-    private final static String NOT_FOUND = "] not found";
-
     @Autowired
     private RoomRepository roomRepository;
 
     @Autowired
     private HotelRepository hotelRepository;
+
+    private final static String NOT_FOUND = "] not found";
 
     public List<RoomDto> getAllRooms(){
         return roomRepository.findAll().stream().map(RoomDto::new).collect(Collectors.toList());

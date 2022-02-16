@@ -1,7 +1,6 @@
 package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CreateHotelResource;
-import be.pxl.travelapi.dto.CreateRoomResource;
 import be.pxl.travelapi.dto.HotelDto;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
@@ -11,7 +10,6 @@ import be.pxl.travelapi.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -20,13 +18,13 @@ import java.util.stream.Collectors;
 @Service
 public class HotelService {
 
-    private final static String NOT_FOUND = "] not found";
-
     @Autowired
     private HotelRepository hotelRepository;
 
     @Autowired
     private CityRepository cityRepository;
+
+    private final static String NOT_FOUND = "] not found";
 
     public List<HotelDto> getAllHotels() {
         return hotelRepository.findAll().stream().map(HotelDto::new).collect(Collectors.toList());

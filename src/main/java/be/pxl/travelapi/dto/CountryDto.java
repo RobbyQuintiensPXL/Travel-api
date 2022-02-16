@@ -1,9 +1,6 @@
 package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.Country;
-import be.pxl.travelapi.models.Region;
-
-import java.util.Set;
 
 public class CountryDto {
 

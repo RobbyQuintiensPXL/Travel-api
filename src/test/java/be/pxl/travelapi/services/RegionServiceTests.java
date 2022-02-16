@@ -2,6 +2,7 @@ package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CreateRegionResource;
 import be.pxl.travelapi.dto.RegionDto;
+import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Country;
 import be.pxl.travelapi.models.Hotel;
@@ -83,5 +84,15 @@ public class RegionServiceTests {
         CreateRegionResource regionResource = new CreateRegionResource(newRegion.getRegionName(), newCountry.getCountryCode());
 
         regionService.addRegion(regionResource);
+    }
+
+    @Test
+    public void throwExceptionRegionNameNotFound(){
+        when(regionRepository.findRegionByRegionName(anyString())).thenThrow(BusinessException.class);
+    }
+
+    @Test
+    public void throwExceptionRegionByCountryNotFound(){
+        when(regionRepository.findRegionsByCountry_CountryCode(anyString())).thenThrow(BusinessException.class);
     }
 }

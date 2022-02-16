@@ -7,14 +7,9 @@ import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.RegionRepository;
-import be.pxl.travelapi.utils.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -23,13 +18,13 @@ import java.util.stream.Collectors;
 @Service
 public class CityService {
 
-    private final static String NOT_FOUND = "] not found";
-
     @Autowired
     private CityRepository cityRepository;
 
     @Autowired
     private RegionRepository regionRepository;
+
+    private final static String NOT_FOUND = "] not found";
 
     public List<CityDto> getAllCities(){
         return cityRepository.findAll().stream().map(CityDto::new).collect(Collectors.toList());

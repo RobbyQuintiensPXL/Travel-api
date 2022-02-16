@@ -1,6 +1,5 @@
 package be.pxl.travelapi.models;
 
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
