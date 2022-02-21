@@ -2,6 +2,7 @@ package be.pxl.travelapi.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class City {
@@ -13,7 +14,8 @@ public class City {
     @Column(name = "city_name")
     private String cityName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
     private Region region;
 
     @Lob
@@ -21,6 +23,9 @@ public class City {
 
     @Column(name = "top_destination")
     boolean isTopDestination;
+
+    @OneToMany(mappedBy = "city")
+    private List<Hotel> hotelList;
 
     public City() {
         //Empty constructor
@@ -64,5 +69,13 @@ public class City {
 
     public void setTopDestination(boolean topDestination) {
         isTopDestination = topDestination;
+    }
+
+    public List<Hotel> getHotelList() {
+        return hotelList;
+    }
+
+    public void setHotelList(List<Hotel> hotelList) {
+        this.hotelList = hotelList;
     }
 }

@@ -1,6 +1,7 @@
 package be.pxl.travelapi.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Country {
@@ -11,6 +12,9 @@ public class Country {
 
     @Column(name = "country_name", nullable = false, unique = true)
     private String countryName;
+
+    @OneToMany(mappedBy = "country")
+    private List<Region> regionList;
 
     public Country() {
         //Empty constructor
@@ -30,5 +34,13 @@ public class Country {
 
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
+    }
+
+    public List<Region> getRegionList() {
+        return regionList;
+    }
+
+    public void setRegionList(List<Region> regionList) {
+        this.regionList = regionList;
     }
 }

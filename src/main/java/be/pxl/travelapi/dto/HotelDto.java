@@ -2,11 +2,13 @@ package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class HotelDto {
 
     private final String hotelName;
     private final int stars;
+    @JsonBackReference
     private final City city;
     private final String address;
     private final byte[] imageHotel;
