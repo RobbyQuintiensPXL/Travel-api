@@ -1,11 +1,9 @@
 package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.Country;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class CountryDto {

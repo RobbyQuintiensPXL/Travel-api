@@ -1,7 +1,6 @@
 package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.City;
-import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Region;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -19,6 +18,7 @@ public class CityDto {
     private final boolean topDestination;
     @JsonManagedReference
     private final List<HotelDto> hotelList;
+    private final String regionName;
 
     public CityDto(City city) {
         this.id = city.getId();
@@ -27,6 +27,7 @@ public class CityDto {
         this.image = city.getImage();
         this.topDestination = city.isTopDestination();
         this.hotelList = city.getHotelList().stream().map(HotelDto::new).collect(Collectors.toList());
+        this.regionName = city.getRegion().getRegionName();
     }
 
     public Long getId() {
@@ -51,5 +52,9 @@ public class CityDto {
 
     public List<HotelDto> getHotelList() {
         return hotelList;
+    }
+
+    public String getRegionName() {
+        return regionName;
     }
 }

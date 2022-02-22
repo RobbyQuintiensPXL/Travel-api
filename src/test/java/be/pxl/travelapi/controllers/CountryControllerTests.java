@@ -98,8 +98,6 @@ public class CountryControllerTests {
         .andExpect(status().isCreated());
     }
 
-    //TODO returnRegionsTest
-
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
