@@ -18,6 +18,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,7 +46,9 @@ public class RegionServiceTests {
     @Test
     public void getAllRegions(){
         List<Region> regionList = new LinkedList<>();
-        regionList.add(new Region());
+        Region region = new Region();
+        region.setCityList(new ArrayList<City>());
+        regionList.add(region);
 
         when(regionRepository.findAll()).thenReturn(regionList);
 
@@ -57,6 +60,7 @@ public class RegionServiceTests {
     public void getRegionByName(){
         Region region = new Region();
         region.setRegionName("TestRegion");
+        region.setCityList(new ArrayList<City>());
         when(regionRepository.findRegionByRegionName(any())).thenReturn(java.util.Optional.of(region));
 
         RegionDto regionDto = regionService.getRegionByName(region.getRegionName());
@@ -66,7 +70,9 @@ public class RegionServiceTests {
     @Test
     public void getRegionsByCountry(){
         List<Region> regionList = new LinkedList<>();
-        regionList.add(new Region());
+        Region region = new Region();
+        region.setCityList(new ArrayList<City>());
+        regionList.add(region);
         when(regionRepository.findRegionsByCountry_CountryCode(any())).thenReturn(regionList);
 
         List<RegionDto> regionDtoList = regionService.listRegionsByCountry("NL");
@@ -78,6 +84,7 @@ public class RegionServiceTests {
         Country newCountry = new Country();
         newCountry.setCountryCode("NL");
         Region newRegion = new Region();
+        newRegion.setCityList(new ArrayList<City>());
         newRegion.setCountry(newCountry);
         when(countryRepository.findCountryByCountryCode(anyString())).thenReturn(java.util.Optional.of(newCountry));
         when(regionRepository.save(any(Region.class))).thenReturn(newRegion);

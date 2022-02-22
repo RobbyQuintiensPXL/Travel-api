@@ -74,5 +74,4 @@ public class CountryRepositoryTest {
         assertThat(foundCountry.get().getCountryName()).isEqualTo(country.getCountryName());
         assertThat(foundCountry.get().getCountryCode()).isEqualTo(country.getCountryCode());
     }
-
 }

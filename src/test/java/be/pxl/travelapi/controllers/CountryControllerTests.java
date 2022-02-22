@@ -3,6 +3,7 @@ package be.pxl.travelapi.controllers;
 import be.pxl.travelapi.dto.CountryDto;
 import be.pxl.travelapi.dto.CreateCountryResource;
 import be.pxl.travelapi.models.Country;
+import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CountryRepository;
 import be.pxl.travelapi.services.CountryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,10 +22,12 @@ import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingExcept
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.anyList;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.hamcrest.CoreMatchers.is;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,6 +53,7 @@ public class CountryControllerTests {
         Country country = new Country();
         country.setCountryCode("TEST");
         country.setCountryName("TestCountry");
+        country.setRegionList(new ArrayList<Region>());
 
         List<CountryDto> countryList = Stream.of(country).map(CountryDto::new).collect(Collectors.toList());
 
@@ -67,7 +71,7 @@ public class CountryControllerTests {
         Country country = new Country();
         country.setCountryCode("TEST");
         country.setCountryName("TestCountry");
-        String countryName = country.getCountryName();
+        country.setRegionList(new ArrayList<Region>());
 
         CountryDto countryDto = new CountryDto(country);
 
@@ -84,6 +88,7 @@ public class CountryControllerTests {
         Country country = new Country();
         country.setCountryCode("TEST");
         country.setCountryName("TestCountry");
+        country.setRegionList(new ArrayList<Region>());
         CreateCountryResource countryResource = new CreateCountryResource(country.getCountryCode(), country.getCountryName());
 
         mvc.perform(post("/countries")
@@ -93,7 +98,8 @@ public class CountryControllerTests {
         .andExpect(status().isCreated());
     }
 
-    //TODO make global method
+    //TODO returnRegionsTest
+
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);

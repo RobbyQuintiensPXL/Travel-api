@@ -4,6 +4,7 @@ import be.pxl.travelapi.dto.CityDto;
 import be.pxl.travelapi.dto.CreateCityResource;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
+import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.RegionRepository;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,6 +59,7 @@ public class CityServiceTests {
     public void getCityByName(){
         City city = new City();
         city.setCityName("TestCity");
+        city.setHotelList(new ArrayList<Hotel>());
 
         when(cityRepository.findCityByCityName(any())).thenReturn(java.util.Optional.of(city));
 
@@ -68,6 +71,7 @@ public class CityServiceTests {
     @Test
     public void getCityById(){
         City city = new City();
+        city.setHotelList(new ArrayList<Hotel>());
 
         when(cityRepository.findCityById(any())).thenReturn(java.util.Optional.of(city));
 
@@ -79,7 +83,9 @@ public class CityServiceTests {
     @Test
     public void getCitiesByRegion(){
         List<City> cityList = new LinkedList<>();
-        cityList.add(new City());
+        City city = new City();
+        city.setHotelList(new ArrayList<Hotel>());
+        cityList.add(city);
         when(cityRepository.findCitiesByRegion_RegionName(any())).thenReturn(cityList);
 
         List<CityDto> cityDtoList = cityService.getAllCitiesByRegion("dd");

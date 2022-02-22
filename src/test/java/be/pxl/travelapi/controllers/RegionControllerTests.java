@@ -3,7 +3,9 @@ package be.pxl.travelapi.controllers;
 import be.pxl.travelapi.dto.CountryDto;
 import be.pxl.travelapi.dto.CreateRegionResource;
 import be.pxl.travelapi.dto.RegionDto;
+import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Country;
+import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.services.CountryService;
 import be.pxl.travelapi.services.RegionService;
@@ -19,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import javax.print.attribute.standard.Media;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -46,7 +49,7 @@ public class RegionControllerTests {
     public void getAllRegions() throws Exception {
         Region region = new Region();
         region.setRegionName("TestRegion");
-
+        region.setCityList(new ArrayList<City>());
         List<RegionDto> regionList = Stream.of(region).map(RegionDto::new).collect(Collectors.toList());
 
         given(regionService.listAllRegions()).willReturn(regionList);
@@ -64,6 +67,7 @@ public class RegionControllerTests {
         country.setCountryCode("TEST");
         Region region = new Region();
         region.setRegionName("TestRegion");
+        region.setCityList(new ArrayList<City>());
         region.setCountry(country);
 
         List<RegionDto> regionList = Stream.of(region).map(RegionDto::new).collect(Collectors.toList());
@@ -74,15 +78,14 @@ public class RegionControllerTests {
         .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$", hasSize(1)))
-        .andExpect(jsonPath("$[0].regionName", is(region.getRegionName())))
-        .andExpect(jsonPath("$[0].country.countryCode", is(region.getCountry().getCountryCode())));
+        .andExpect(jsonPath("$[0].regionName", is(region.getRegionName())));
     }
 
     @Test
     public void getRegionByName() throws Exception{
         Region region = new Region();
         region.setRegionName("TestRegion");
-
+        region.setCityList(new ArrayList<City>());
         RegionDto regionDto = new RegionDto(region);
 
         given(regionService.getRegionByName(region.getRegionName())).willReturn(regionDto);

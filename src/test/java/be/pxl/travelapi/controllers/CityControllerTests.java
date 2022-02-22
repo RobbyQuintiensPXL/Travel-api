@@ -3,6 +3,7 @@ package be.pxl.travelapi.controllers;
 import be.pxl.travelapi.dto.CityDto;
 import be.pxl.travelapi.dto.CreateCityResource;
 import be.pxl.travelapi.models.City;
+import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.services.CityService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,6 +31,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.CoreMatchers.is;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -51,14 +53,13 @@ public class CityControllerTests {
     @MockBean
     private CityService cityService;
 
-    @Autowired
-    private WebApplicationContext webApplicationContext;
 
     @Test
     public void getAllCities() throws Exception {
         City city = new City();
         city.setCityName("TestCity");
         city.setTopDestination(true);
+        city.setHotelList(new ArrayList<Hotel>());
 
         List<CityDto> cityDtoList = Stream.of(city).map(CityDto::new).collect(Collectors.toList());
 
@@ -77,6 +78,7 @@ public class CityControllerTests {
         Region region = new Region();
         region.setRegionName("TestRegion");
         city.setCityName("TestCity");
+        city.setHotelList(new ArrayList<Hotel>());
         city.setRegion(region);
 
         List<CityDto> cityDtoList = Stream.of(city).map(CityDto::new).collect(Collectors.toList());
@@ -87,15 +89,14 @@ public class CityControllerTests {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].cityName", is(city.getCityName())))
-                .andExpect(jsonPath("$[0].region.regionName", is(city.getRegion().getRegionName())));
+                .andExpect(jsonPath("$[0].cityName", is(city.getCityName())));
     }
 
     @Test
     public void getCityByCityName() throws Exception {
         City city = new City();
         city.setCityName("TestCity");
-
+        city.setHotelList(new ArrayList<Hotel>());
         CityDto cityDto = new CityDto(city);
 
         given(cityService.getCityByName(cityDto.getCityName())).willReturn(cityDto);
@@ -111,7 +112,7 @@ public class CityControllerTests {
         City city = new City();
         city.setCityName("TestCity");
         city.setId(1L);
-
+        city.setHotelList(new ArrayList<Hotel>());
         CityDto cityDto = new CityDto(city);
 
         given(cityService.getCityById(cityDto.getId())).willReturn(cityDto);

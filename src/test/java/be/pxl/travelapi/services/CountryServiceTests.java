@@ -3,7 +3,10 @@ package be.pxl.travelapi.services;
 import be.pxl.travelapi.dto.CountryDto;
 import be.pxl.travelapi.dto.CreateCountryResource;
 import be.pxl.travelapi.exception.BusinessException;
+import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Country;
+import be.pxl.travelapi.models.Hotel;
+import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CountryRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +20,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +45,9 @@ public class CountryServiceTests {
     @Test
     public void getAllCountries(){
         List<Country> countryList = new LinkedList<>();
-        countryList.add(new Country());
+        Country country = new Country();
+        country.setRegionList(new ArrayList<Region>());
+        countryList.add(country);
 
         when(countryRepository.findAll()).thenReturn(countryList);
 
@@ -53,6 +59,7 @@ public class CountryServiceTests {
     public void getCountryByName(){
         Country newCountry = new Country();
         newCountry.setCountryName("BobbejaanLand");
+        newCountry.setRegionList(new ArrayList<Region>());
 
         when(countryRepository.findCountryByCountryName(newCountry.getCountryName())).thenReturn(Optional.of(newCountry));
 
