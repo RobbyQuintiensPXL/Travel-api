@@ -95,11 +95,12 @@ public class CityControllerTests {
     @Test
     public void getCityByCityName() throws Exception {
         City city = new City();
+        city.setId(1L);
         city.setCityName("TestCity");
         city.setHotelList(new ArrayList<Hotel>());
         CityDto cityDto = new CityDto(city);
 
-        given(cityService.getCityByName(cityDto.getCityName())).willReturn(cityDto);
+        given(cityService.getCityByName(city.getCityName())).willReturn(cityDto);
 
         mvc.perform(get("/cities/TestCity")
         .contentType(MediaType.APPLICATION_JSON))

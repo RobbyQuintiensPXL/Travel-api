@@ -27,7 +27,7 @@ public class CityDto {
         this.image = city.getImage();
         this.topDestination = city.isTopDestination();
         this.hotelList = city.getHotelList().stream().map(HotelDto::new).collect(Collectors.toList());
-        this.regionName = city.getRegion().getRegionName();
+        this.regionName = city.getRegionName();
     }
 
     public Long getId() {

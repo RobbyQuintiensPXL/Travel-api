@@ -27,6 +27,8 @@ public class City {
     @OneToMany(mappedBy = "city")
     private List<Hotel> hotelList;
 
+    private String regionName;
+
     public City() {
         //Empty constructor
     }
@@ -77,5 +79,13 @@ public class City {
 
     public void setHotelList(List<Hotel> hotelList) {
         this.hotelList = hotelList;
+    }
+
+    public String getRegionName() {
+        return regionName;
+    }
+
+    public void setRegionName(String regionName) {
+        this.regionName = region.getRegionName();
     }
 }
