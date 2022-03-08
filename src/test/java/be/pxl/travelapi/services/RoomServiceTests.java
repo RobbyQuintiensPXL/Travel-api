@@ -15,7 +15,6 @@ import be.pxl.travelapi.repository.RegionRepository;
 import be.pxl.travelapi.repository.RoomRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -26,7 +25,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -71,13 +69,11 @@ public class RoomServiceTests {
     @Test
     public void throwExceptionRoomByIdNotFound(){
         when(roomRepository.findRoomsByHotel_Id(any(Long.class)).isEmpty()).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionRoomsNotFound(){
         when(roomRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
 //    @Test

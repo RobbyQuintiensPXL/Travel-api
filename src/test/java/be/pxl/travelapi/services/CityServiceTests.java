@@ -10,7 +10,6 @@ import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.RegionRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -111,24 +110,20 @@ public class CityServiceTests {
     @Test
     public void throwExceptionCityNameNotFound(){
         when(cityRepository.findCityByCityName(anyString()).isEmpty()).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionRegionNotFound(){
         when(cityRepository.findCitiesByRegion_RegionName(anyString()).isEmpty()).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionCityIdNotFound(){
         when(cityRepository.findCityById(any(Long.class)).isEmpty()).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionCitiesNotFound(){
         when(cityRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 }

@@ -12,7 +12,6 @@ import be.pxl.travelapi.repository.HotelRepository;
 import be.pxl.travelapi.repository.RoomRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -23,7 +22,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
 import java.util.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -127,25 +127,21 @@ public class HotelServiceTests {
     @Test
     public void throwExceptionHotelNameNotFound(){
         when(hotelRepository.findHotelByHotelName(anyString())).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionHotelStarsNotFound(){
         when(hotelRepository.findHotelsByStars(any(int.class))).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionHotelByCityNotFound(){
         when(hotelRepository.findHotelsByCity_CityName(anyString())).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionHotelByCityAndStarsNotFound(){
         when(hotelRepository.findHotelsByCity_CityNameAndStars(anyString(), any(int.class))).thenThrow(BusinessException.class);
-        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
 }
