@@ -6,7 +6,7 @@ import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.services.CityService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper; 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

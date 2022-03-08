@@ -11,6 +11,7 @@ import be.pxl.travelapi.repository.CountryRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -25,8 +26,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -81,15 +81,18 @@ public class CountryServiceTests {
     @Test
     public void throwExceptionCountryNameNotFound(){
         when(countryRepository.findCountryByCountryName(anyString()).isEmpty()).thenThrow(BusinessException.class);
+        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionCountryCodeNotFound(){
         when(countryRepository.findCountryByCountryCode(anyString()).isEmpty()).thenThrow(BusinessException.class);
+        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionCountriesNotFound(){
         when(countryRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
+        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 }

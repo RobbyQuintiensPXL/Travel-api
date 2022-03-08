@@ -11,6 +11,7 @@ import be.pxl.travelapi.repository.CountryRepository;
 import be.pxl.travelapi.repository.RegionRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,8 +23,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -96,15 +96,18 @@ public class RegionServiceTests {
     @Test
     public void throwExceptionRegionNameNotFound(){
         when(regionRepository.findRegionByRegionName(anyString()).isEmpty()).thenThrow(BusinessException.class);
+        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionRegionByCountryNotFound(){
         when(regionRepository.findRegionsByCountry_CountryCode(anyString()).isEmpty()).thenThrow(BusinessException.class);
+        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 
     @Test
     public void throwExceptionRegionsNotFound(){
         when(regionRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
+        assertThrows(BusinessException.class, ArgumentMatchers::anyString);
     }
 }
