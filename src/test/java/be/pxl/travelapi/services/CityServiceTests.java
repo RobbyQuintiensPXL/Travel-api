@@ -104,7 +104,6 @@ public class CityServiceTests {
                 "text/plain", "test data".getBytes());
         CreateCityResource cityResource = new CreateCityResource(newCity.getCityName(), region.getRegionName(), file , false);
         cityService.addCity(cityResource);
-        assertEquals(newCity.getRegionName(), cityResource.getRegion());
     }
 
     @Test
