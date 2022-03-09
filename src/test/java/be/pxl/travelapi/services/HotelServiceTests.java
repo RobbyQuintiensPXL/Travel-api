@@ -22,10 +22,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -126,22 +126,26 @@ public class HotelServiceTests {
 
     @Test
     public void throwExceptionHotelNameNotFound(){
-        when(hotelRepository.findHotelByHotelName(anyString())).thenThrow(BusinessException.class);
+        HotelService hotelServiceMock = mock(HotelService.class);
+        assertThrows(BusinessException.class, () -> hotelServiceMock.getHotelByName("test"));
     }
 
     @Test
     public void throwExceptionHotelStarsNotFound(){
-        when(hotelRepository.findHotelsByStars(any(int.class))).thenThrow(BusinessException.class);
+        HotelService hotelServiceMock = mock(HotelService.class);
+        assertThrows(BusinessException.class, () -> hotelServiceMock.getHotelsByStars(7));
     }
 
     @Test
     public void throwExceptionHotelByCityNotFound(){
-        when(hotelRepository.findHotelsByCity_CityName(anyString())).thenThrow(BusinessException.class);
+        HotelService hotelServiceMock = mock(HotelService.class);
+        assertThrows(BusinessException.class, () -> hotelServiceMock.getHotelsByCity("test"));
     }
 
     @Test
-    public void throwExceptionHotelByCityAndStarsNotFound(){
-        when(hotelRepository.findHotelsByCity_CityNameAndStars(anyString(), any(int.class))).thenThrow(BusinessException.class);
+    public void throwExceptionHotelByCityAndStarsNotFound() {
+        HotelService hotelServiceMock = mock(HotelService.class);
+        assertThrows(BusinessException.class, () -> hotelServiceMock.getHotelByCityAndStars("test", 7));
     }
 
 }

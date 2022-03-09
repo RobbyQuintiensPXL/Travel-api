@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -94,17 +94,20 @@ public class RegionServiceTests {
     }
 
     @Test
-    public void throwExceptionRegionNameNotFound(){
-        when(regionRepository.findRegionByRegionName(anyString()).isEmpty()).thenThrow(BusinessException.class);
+    public void throwExceptionRegionNameNotFound() {
+        RegionService regionServiceMock = mock(RegionService.class);
+        assertThrows(BusinessException.class, () -> regionServiceMock.getRegionByName("test"));
     }
 
     @Test
-    public void throwExceptionRegionByCountryNotFound(){
-        when(regionRepository.findRegionsByCountry_CountryCode(anyString()).isEmpty()).thenThrow(BusinessException.class);
+    public void throwExceptionRegionByCountryNotFound() {
+        RegionService regionServiceMock = mock(RegionService.class);
+        assertThrows(BusinessException.class, () -> regionServiceMock.listRegionsByCountry("test"));
     }
 
     @Test
     public void throwExceptionRegionsNotFound(){
-        when(regionRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
+        RegionService regionServiceMock = mock(RegionService.class);
+        assertThrows(BusinessException.class, () -> regionServiceMock.listAllRegions());
     }
 }

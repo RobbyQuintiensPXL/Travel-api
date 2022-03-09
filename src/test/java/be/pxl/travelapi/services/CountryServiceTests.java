@@ -25,10 +25,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -80,16 +80,13 @@ public class CountryServiceTests {
 
     @Test
     public void throwExceptionCountryNameNotFound(){
-        when(countryRepository.findCountryByCountryName(anyString()).isEmpty()).thenThrow(BusinessException.class);
-    }
-
-    @Test
-    public void throwExceptionCountryCodeNotFound(){
-        when(countryRepository.findCountryByCountryCode(anyString()).isEmpty()).thenThrow(BusinessException.class);
+        CountryService countryServiceMock = mock(CountryService.class);
+        assertThrows(BusinessException.class, () -> countryServiceMock.getCountryByName("test"));
     }
 
     @Test
     public void throwExceptionCountriesNotFound(){
-        when(countryRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
+        CountryService countryServiceMock = mock(CountryService.class);
+        assertThrows(BusinessException.class, () -> countryServiceMock.listAllCountries());
     }
 }

@@ -25,8 +25,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -67,13 +69,21 @@ public class RoomServiceTests {
     }
 
     @Test
-    public void throwExceptionRoomByIdNotFound(){
-        when(roomRepository.findRoomsByHotel_Id(any(Long.class)).isEmpty()).thenThrow(BusinessException.class);
+    public void throwExceptionRoomByHotelIdNotFound() {
+        RoomService roomServiceMock = mock(RoomService.class);
+        assertThrows(BusinessException.class, () -> roomServiceMock.getRoomsByHotelId(100L));
+    }
+
+    @Test
+    public void throwExceptionRoomByHotelNameNotFound() {
+        RoomService roomServiceMock = mock(RoomService.class);
+        assertThrows(BusinessException.class, () -> roomServiceMock.getRoomsByHotel("test"));
     }
 
     @Test
     public void throwExceptionRoomsNotFound(){
-        when(roomRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
+        RoomService roomServiceMock = mock(RoomService.class);
+        assertThrows(BusinessException.class, () -> roomServiceMock.getAllRooms());
     }
 
 //    @Test

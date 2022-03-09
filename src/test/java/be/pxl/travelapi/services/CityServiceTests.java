@@ -108,24 +108,25 @@ public class CityServiceTests {
 
     @Test
     public void throwExceptionCityNameNotFound(){
-        CityService cityServiceLocal = mock(CityService.class);
-        when(cityServiceLocal.getCityByName("test")).thenThrow(BusinessException.class);
-
-        assertThrows(BusinessException.class, () -> cityServiceLocal.getCityByName("test"));
+        CityService cityServiceMock = mock(CityService.class);
+        assertThrows(BusinessException.class, () -> cityServiceMock.getCityByName("test"));
     }
 
     @Test
     public void throwExceptionRegionNotFound(){
-        when(cityRepository.findCitiesByRegion_RegionName(anyString()).isEmpty()).thenThrow(BusinessException.class);
+        CityService cityServiceMock = mock(CityService.class);
+        assertThrows(BusinessException.class, () -> cityServiceMock.getAllCitiesByRegion("test"));
     }
 
     @Test
     public void throwExceptionCityIdNotFound(){
-        when(cityRepository.findCityById(any(Long.class)).isEmpty()).thenThrow(BusinessException.class);
+        CityService cityServiceMock = mock(CityService.class);
+        assertThrows(BusinessException.class, () -> cityServiceMock.getCityById(100L));
     }
 
     @Test
     public void throwExceptionCitiesNotFound(){
-        when(cityRepository.findAll().isEmpty()).thenThrow(BusinessException.class);
+        CityService cityServiceMock = mock(CityService.class);
+        assertThrows(BusinessException.class, () -> cityServiceMock.getAllCities());
     }
 }
