@@ -70,14 +70,14 @@ public class RoomServiceTests {
 
     @Test
     public void throwExceptionRoomByHotelIdNotFound() {
-        RoomService roomServiceMock = mock(RoomService.class);
-        assertThrows(BusinessException.class, () -> roomServiceMock.getRoomsByHotelId(100L));
+        Throwable thrown = assertThrows(BusinessException.class, () -> roomService.getRoomsByHotelId(100L));
+        assertEquals("Hotel with id [100] not found", thrown.getMessage());
     }
 
     @Test
     public void throwExceptionRoomByHotelNameNotFound() {
-        RoomService roomServiceMock = mock(RoomService.class);
-        assertThrows(BusinessException.class, () -> roomServiceMock.getRoomsByHotel("test"));
+        Throwable thrown = assertThrows(BusinessException.class, () -> roomService.getRoomsByHotel("test"));
+        assertEquals("Hotel [test] not found", thrown.getMessage());
     }
 
     @Test
