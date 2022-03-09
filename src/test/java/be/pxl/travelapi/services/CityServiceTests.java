@@ -9,6 +9,7 @@ import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.RegionRepository;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,8 +28,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -108,7 +108,10 @@ public class CityServiceTests {
 
     @Test
     public void throwExceptionCityNameNotFound(){
-        when(cityRepository.findCityByCityName(anyString()).isEmpty()).thenThrow(BusinessException.class);
+        CityService cityServiceLocal = mock(CityService.class);
+        when(cityServiceLocal.getCityByName("test")).thenThrow(BusinessException.class);
+
+        assertThrows(BusinessException.class, () -> cityServiceLocal.getCityByName("test"));
     }
 
     @Test
