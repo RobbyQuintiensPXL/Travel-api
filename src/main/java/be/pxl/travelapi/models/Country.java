@@ -13,8 +13,6 @@ public class Country {
     @Column(name = "country_name", nullable = false, unique = true)
     private String countryName;
 
-    @OneToMany(mappedBy = "country")
-    private List<Region> regionList;
 
     public Country() {
         //Empty constructor
@@ -36,11 +34,4 @@ public class Country {
         this.countryCode = countryCode;
     }
 
-    public List<Region> getRegionList() {
-        return regionList;
-    }
-
-    public void setRegionList(List<Region> regionList) {
-        this.regionList = regionList;
-    }
 }

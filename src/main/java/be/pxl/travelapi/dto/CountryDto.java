@@ -10,13 +10,10 @@ public class CountryDto {
 
     private final String countryName;
     private final String countryCode;
-    @JsonManagedReference
-    private final List<RegionDto> regionList;
 
     public CountryDto(Country country) {
         this.countryName = country.getCountryName();
         this.countryCode = country.getCountryCode();
-        this.regionList = country.getRegionList().stream().map(RegionDto::new).collect(Collectors.toList());
     }
 
     public String getCountryName() {
@@ -25,9 +22,5 @@ public class CountryDto {
 
     public String getCountryCode() {
         return countryCode;
-    }
-
-    public List<RegionDto> getRegionList() {
-        return regionList;
     }
 }

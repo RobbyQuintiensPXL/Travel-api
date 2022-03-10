@@ -46,7 +46,6 @@ public class CountryServiceTests {
     public void getAllCountries(){
         List<Country> countryList = new LinkedList<>();
         Country country = new Country();
-        country.setRegionList(new ArrayList<Region>());
         countryList.add(country);
 
         when(countryRepository.findAll()).thenReturn(countryList);
@@ -59,7 +58,6 @@ public class CountryServiceTests {
     public void getCountryByName(){
         Country newCountry = new Country();
         newCountry.setCountryName("BobbejaanLand");
-        newCountry.setRegionList(new ArrayList<Region>());
 
         when(countryRepository.findCountryByCountryName(newCountry.getCountryName())).thenReturn(Optional.of(newCountry));
 

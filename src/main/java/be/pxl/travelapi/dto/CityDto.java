@@ -12,12 +12,9 @@ public class CityDto {
 
     private final Long id;
     private final String cityName;
-    @JsonBackReference
     private final Region region;
     private final byte[] image;
     private final boolean topDestination;
-    @JsonManagedReference
-    private final List<HotelDto> hotelList;
     private final String regionName;
 
     public CityDto(City city) {
@@ -26,7 +23,6 @@ public class CityDto {
         this.region = city.getRegion();
         this.image = city.getImage();
         this.topDestination = city.isTopDestination();
-        this.hotelList = city.getHotelList().stream().map(HotelDto::new).collect(Collectors.toList());
         this.regionName = city.getRegionName();
     }
 
@@ -48,10 +44,6 @@ public class CityDto {
 
     public boolean isTopDestination() {
         return topDestination;
-    }
-
-    public List<HotelDto> getHotelList() {
-        return hotelList;
     }
 
     public String getRegionName() {

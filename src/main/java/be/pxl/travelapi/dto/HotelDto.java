@@ -8,7 +8,6 @@ public class HotelDto {
 
     private final String hotelName;
     private final int stars;
-    @JsonBackReference
     private final City city;
     private final String address;
     private final byte[] imageHotel;

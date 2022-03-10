@@ -14,8 +14,7 @@ public class City {
     @Column(name = "city_name")
     private String cityName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id")
+    @ManyToOne
     private Region region;
 
     @Lob
@@ -23,9 +22,6 @@ public class City {
 
     @Column(name = "top_destination")
     boolean isTopDestination;
-
-    @OneToMany(mappedBy = "city")
-    private List<Hotel> hotelList;
 
     private String regionName;
 
@@ -71,14 +67,6 @@ public class City {
 
     public void setTopDestination(boolean topDestination) {
         isTopDestination = topDestination;
-    }
-
-    public List<Hotel> getHotelList() {
-        return hotelList;
-    }
-
-    public void setHotelList(List<Hotel> hotelList) {
-        this.hotelList = hotelList;
     }
 
     public String getRegionName() {

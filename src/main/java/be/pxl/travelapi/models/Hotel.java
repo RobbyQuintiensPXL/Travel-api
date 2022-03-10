@@ -15,8 +15,7 @@ public class Hotel {
 
     private int stars;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="city_id")
+    @ManyToOne
     private City city;
 
     private String address;

@@ -59,7 +59,6 @@ public class CityControllerTests {
         City city = new City();
         city.setCityName("TestCity");
         city.setTopDestination(true);
-        city.setHotelList(new ArrayList<Hotel>());
 
         List<CityDto> cityDtoList = Stream.of(city).map(CityDto::new).collect(Collectors.toList());
 
@@ -78,7 +77,6 @@ public class CityControllerTests {
         Region region = new Region();
         region.setRegionName("TestRegion");
         city.setCityName("TestCity");
-        city.setHotelList(new ArrayList<Hotel>());
         city.setRegion(region);
 
         List<CityDto> cityDtoList = Stream.of(city).map(CityDto::new).collect(Collectors.toList());
@@ -97,7 +95,6 @@ public class CityControllerTests {
         City city = new City();
         city.setId(1L);
         city.setCityName("TestCity");
-        city.setHotelList(new ArrayList<Hotel>());
         CityDto cityDto = new CityDto(city);
 
         given(cityService.getCityByName(city.getCityName())).willReturn(cityDto);
@@ -113,7 +110,6 @@ public class CityControllerTests {
         City city = new City();
         city.setCityName("TestCity");
         city.setId(1L);
-        city.setHotelList(new ArrayList<Hotel>());
         CityDto cityDto = new CityDto(city);
 
         given(cityService.getCityById(cityDto.getId())).willReturn(cityDto);

@@ -59,7 +59,6 @@ public class CityServiceTests {
     public void getCityByName(){
         City city = new City();
         city.setCityName("TestCity");
-        city.setHotelList(new ArrayList<Hotel>());
 
         when(cityRepository.findCityByCityName(any())).thenReturn(java.util.Optional.of(city));
 
@@ -71,7 +70,6 @@ public class CityServiceTests {
     @Test
     public void getCityById(){
         City city = new City();
-        city.setHotelList(new ArrayList<Hotel>());
 
         when(cityRepository.findCityById(any())).thenReturn(java.util.Optional.of(city));
 
@@ -84,7 +82,6 @@ public class CityServiceTests {
     public void getCitiesByRegion(){
         List<City> cityList = new LinkedList<>();
         City city = new City();
-        city.setHotelList(new ArrayList<Hotel>());
         cityList.add(city);
         when(cityRepository.findCitiesByRegion_RegionName(any())).thenReturn(cityList);
 

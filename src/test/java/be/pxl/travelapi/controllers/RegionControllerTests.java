@@ -49,7 +49,6 @@ public class RegionControllerTests {
     public void getAllRegions() throws Exception {
         Region region = new Region();
         region.setRegionName("TestRegion");
-        region.setCityList(new ArrayList<City>());
         List<RegionDto> regionList = Stream.of(region).map(RegionDto::new).collect(Collectors.toList());
 
         given(regionService.listAllRegions()).willReturn(regionList);
@@ -67,7 +66,6 @@ public class RegionControllerTests {
         country.setCountryCode("TEST");
         Region region = new Region();
         region.setRegionName("TestRegion");
-        region.setCityList(new ArrayList<City>());
         region.setCountry(country);
 
         List<RegionDto> regionList = Stream.of(region).map(RegionDto::new).collect(Collectors.toList());
@@ -85,7 +83,6 @@ public class RegionControllerTests {
     public void getRegionByName() throws Exception{
         Region region = new Region();
         region.setRegionName("TestRegion");
-        region.setCityList(new ArrayList<City>());
         RegionDto regionDto = new RegionDto(region);
 
         given(regionService.getRegionByName(region.getRegionName())).willReturn(regionDto);

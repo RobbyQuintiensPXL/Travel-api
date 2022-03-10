@@ -12,16 +12,12 @@ public class RegionDto {
 
     private final Long id;
     private final String regionName;
-    @JsonBackReference
     private final Country country;
-    @JsonManagedReference
-    private final List<CityDto> cityList;
 
     public RegionDto(Region region) {
         this.id = region.getId();
         this.regionName = region.getRegionName();
         this.country = region.getCountry();
-        this.cityList = region.getCityList().stream().map(CityDto::new).collect(Collectors.toList());
     }
 
     public String getRegionName() {
@@ -34,9 +30,5 @@ public class RegionDto {
 
     public Country getCountry() {
         return country;
-    }
-
-    public List<CityDto> getCityList() {
-        return cityList;
     }
 }

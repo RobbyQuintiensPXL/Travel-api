@@ -53,7 +53,6 @@ public class CountryControllerTests {
         Country country = new Country();
         country.setCountryCode("TEST");
         country.setCountryName("TestCountry");
-        country.setRegionList(new ArrayList<Region>());
 
         List<CountryDto> countryList = Stream.of(country).map(CountryDto::new).collect(Collectors.toList());
 
@@ -71,7 +70,6 @@ public class CountryControllerTests {
         Country country = new Country();
         country.setCountryCode("TEST");
         country.setCountryName("TestCountry");
-        country.setRegionList(new ArrayList<Region>());
 
         CountryDto countryDto = new CountryDto(country);
 
@@ -88,7 +86,6 @@ public class CountryControllerTests {
         Country country = new Country();
         country.setCountryCode("TEST");
         country.setCountryName("TestCountry");
-        country.setRegionList(new ArrayList<Region>());
         CreateCountryResource countryResource = new CreateCountryResource(country.getCountryCode(), country.getCountryName());
 
         mvc.perform(post("/countries")
