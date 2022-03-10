@@ -34,7 +34,7 @@ public class RegionService {
     public RegionDto getRegionByName(String regionName){
         Optional<RegionDto> foundRegion = regionRepository.findRegionByRegionName(regionName).map(RegionDto::new);
         if(foundRegion.isEmpty()){
-            throw new BusinessException("Region [" + regionName + "] not found.");
+            throw new BusinessException("Region [" + regionName + "] not found");
         }
         return foundRegion.get();
     }

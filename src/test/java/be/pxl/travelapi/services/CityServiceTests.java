@@ -115,7 +115,7 @@ public class CityServiceTests {
     @Test
     public void throwExceptionRegionNotFound(){
         Throwable thrown = assertThrows(BusinessException.class, () -> cityService.getAllCitiesByRegion("test"));
-        assertEquals("Region [] not found", thrown.getMessage());
+        assertEquals("Region [test] not found", thrown.getMessage());
     }
 
     @Test

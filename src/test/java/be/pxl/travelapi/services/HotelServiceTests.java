@@ -139,7 +139,7 @@ public class HotelServiceTests {
     @Test
     public void throwExceptionHotelByCityNotFound(){
         Throwable thrown = assertThrows(BusinessException.class, () -> hotelService.getHotelsByCity("test"));
-        assertEquals("Hotel [test] not found", thrown.getMessage());
+        assertEquals("City [test] not found", thrown.getMessage());
     }
 
 //    @Test
