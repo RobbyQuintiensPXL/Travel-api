@@ -19,7 +19,11 @@ public class CountryService {
     private CountryRepository countryRepository;
 
     public List<CountryDto> listAllCountries() {
-        return countryRepository.findAll().stream().map(CountryDto::new).collect(Collectors.toList());
+        List<CountryDto> countryDtoList = countryRepository.findAll().stream().map(CountryDto::new).collect(Collectors.toList());
+        if(countryDtoList.isEmpty()){
+            throw new BusinessException("No countries found");
+        }
+        return countryDtoList;
     }
 
     public CountryDto getCountryByName(String countryName) {

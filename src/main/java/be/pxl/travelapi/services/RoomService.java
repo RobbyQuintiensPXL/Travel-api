@@ -27,7 +27,11 @@ public class RoomService {
     private final static String NOT_FOUND = "] not found";
 
     public List<RoomDto> getAllRooms(){
-        return roomRepository.findAll().stream().map(RoomDto::new).collect(Collectors.toList());
+        List<RoomDto> roomDtoList = roomRepository.findAll().stream().map(RoomDto::new).collect(Collectors.toList());
+        if(roomDtoList.isEmpty()){
+            throw new BusinessException("No rooms found");
+        }
+        return roomDtoList;
     }
 
     public List<RoomDto> getRoomsByHotel(String hotelName){

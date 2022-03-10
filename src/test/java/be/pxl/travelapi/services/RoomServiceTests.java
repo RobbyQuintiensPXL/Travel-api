@@ -80,6 +80,12 @@ public class RoomServiceTests {
         assertEquals("Hotel [test] not found", thrown.getMessage());
     }
 
+    @Test
+    public void throwExceptionNoRoomsFound() {
+        Throwable thrown = assertThrows(BusinessException.class, () -> roomService.getAllRooms());
+        assertEquals("No rooms found", thrown.getMessage());
+    }
+
 
 //    @Test
 //    public void addRoomToHotelTest(){

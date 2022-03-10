@@ -24,11 +24,19 @@ public class RegionService {
     private CountryRepository countryRepository;
 
     public List<RegionDto> listAllRegions(){
-        return regionRepository.findAll().stream().map(RegionDto::new).collect(Collectors.toList());
+        List<RegionDto> regionDtoList = regionRepository.findAll().stream().map(RegionDto::new).collect(Collectors.toList());
+        if(regionDtoList.isEmpty()){
+            throw new BusinessException("No regions found");
+        }
+        return regionDtoList;
     }
 
     public List<RegionDto> listRegionsByCountry(String countryCode){
-        return regionRepository.findRegionsByCountry_CountryCode(countryCode).stream().map(RegionDto::new).collect(Collectors.toList());
+        List<RegionDto> regionDtoList = regionRepository.findRegionsByCountry_CountryCode(countryCode).stream().map(RegionDto::new).collect(Collectors.toList());
+        if(regionDtoList.isEmpty()){
+            throw new BusinessException("No regions found");
+        }
+        return regionDtoList;
     }
 
     public RegionDto getRegionByName(String regionName){

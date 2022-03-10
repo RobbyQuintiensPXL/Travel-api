@@ -84,9 +84,9 @@ public class CountryServiceTests {
         assertEquals("Country [test] not found", thrown.getMessage());
     }
 
-//    @Test
-//    public void throwExceptionCountriesNotFound(){
-//        CountryService countryServiceMock = mock(CountryService.class);
-//        assertThrows(BusinessException.class, () -> countryServiceMock.listAllCountries());
-//    }
+    @Test
+    public void throwExceptionCountriesNotFound(){
+        Throwable thrown = assertThrows(BusinessException.class, () -> countryService.listAllCountries());
+        assertEquals("No countries found", thrown.getMessage());
+    }
 }

@@ -99,4 +99,16 @@ public class RegionServiceTests {
         assertEquals("Region [test] not found", thrown.getMessage());
     }
 
+    @Test
+    public void throwExceptionNoRegionsFound(){
+        Throwable thrown = assertThrows(BusinessException.class, () -> regionService.listAllRegions());
+        assertEquals("No regions found", thrown.getMessage());
+    }
+
+    @Test
+    public void throwExceptionNoRegionsByCountryFound(){
+        Throwable thrown = assertThrows(BusinessException.class, () -> regionService.listRegionsByCountry("test"));
+        assertEquals("No regions found", thrown.getMessage());
+    }
+
 }

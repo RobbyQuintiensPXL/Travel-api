@@ -124,9 +124,9 @@ public class CityServiceTests {
         assertEquals("City with id [100] not found", thrown.getMessage());
     }
 
-//    @Test
-//    public void throwExceptionCitiesNotFound(){
-//        CityService cityServiceMock = mock(CityService.class);
-//        assertThrows(BusinessException.class, () -> cityServiceMock.getAllCities());
-//    }
+    @Test
+    public void throwExceptionCitiesNotFound(){
+        Throwable thrown = assertThrows(BusinessException.class, () -> cityService.getAllCities());
+        assertEquals("No cities found", thrown.getMessage());
+    }
 }

@@ -27,7 +27,11 @@ public class CityService {
     private final static String NOT_FOUND = "] not found";
 
     public List<CityDto> getAllCities(){
-        return cityRepository.findAll().stream().map(CityDto::new).collect(Collectors.toList());
+        List<CityDto> cityDtoList = cityRepository.findAll().stream().map(CityDto::new).collect(Collectors.toList());
+        if(cityDtoList.isEmpty()){
+            throw new BusinessException("No cities found");
+        }
+        return cityDtoList;
     }
 
     public List<CityDto> getAllCitiesByRegion(String regionName){

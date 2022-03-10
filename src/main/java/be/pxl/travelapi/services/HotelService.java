@@ -27,7 +27,11 @@ public class HotelService {
     private final static String NOT_FOUND = "] not found";
 
     public List<HotelDto> getAllHotels() {
-        return hotelRepository.findAll().stream().map(HotelDto::new).collect(Collectors.toList());
+        List<HotelDto> hotelDtoList = hotelRepository.findAll().stream().map(HotelDto::new).collect(Collectors.toList());
+        if(hotelDtoList.isEmpty()){
+            throw new BusinessException("No hotels found");
+        }
+        return hotelDtoList;
     }
 
     public List<HotelDto> getHotelsByCity(String cityName) {
