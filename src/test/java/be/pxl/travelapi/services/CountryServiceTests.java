@@ -80,13 +80,13 @@ public class CountryServiceTests {
 
     @Test
     public void throwExceptionCountryNameNotFound(){
-        CountryService countryServiceMock = mock(CountryService.class);
-        assertThrows(BusinessException.class, () -> countryServiceMock.getCountryByName("test"));
+        Throwable thrown = assertThrows(BusinessException.class, () -> countryService.getCountryByName("test"));
+        assertEquals("Country [test] not found", thrown.getMessage());
     }
 
-    @Test
-    public void throwExceptionCountriesNotFound(){
-        CountryService countryServiceMock = mock(CountryService.class);
-        assertThrows(BusinessException.class, () -> countryServiceMock.listAllCountries());
-    }
+//    @Test
+//    public void throwExceptionCountriesNotFound(){
+//        CountryService countryServiceMock = mock(CountryService.class);
+//        assertThrows(BusinessException.class, () -> countryServiceMock.listAllCountries());
+//    }
 }

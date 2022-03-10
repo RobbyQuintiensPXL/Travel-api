@@ -95,19 +95,8 @@ public class RegionServiceTests {
 
     @Test
     public void throwExceptionRegionNameNotFound() {
-        RegionService regionServiceMock = mock(RegionService.class);
-        assertThrows(BusinessException.class, () -> regionServiceMock.getRegionByName("test"));
+        Throwable thrown = assertThrows(BusinessException.class, () -> regionService.getRegionByName("test"));
+        assertEquals("Region [test] not found", thrown.getMessage());
     }
 
-    @Test
-    public void throwExceptionRegionByCountryNotFound() {
-        RegionService regionServiceMock = mock(RegionService.class);
-        assertThrows(BusinessException.class, () -> regionServiceMock.listRegionsByCountry("test"));
-    }
-
-    @Test
-    public void throwExceptionRegionsNotFound(){
-        RegionService regionServiceMock = mock(RegionService.class);
-        assertThrows(BusinessException.class, () -> regionServiceMock.listAllRegions());
-    }
 }

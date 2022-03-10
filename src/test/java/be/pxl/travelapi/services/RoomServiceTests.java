@@ -80,11 +80,6 @@ public class RoomServiceTests {
         assertEquals("Hotel [test] not found", thrown.getMessage());
     }
 
-    @Test
-    public void throwExceptionRoomsNotFound(){
-        RoomService roomServiceMock = mock(RoomService.class);
-        assertThrows(BusinessException.class, () -> roomServiceMock.getAllRooms());
-    }
 
 //    @Test
 //    public void addRoomToHotelTest(){

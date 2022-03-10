@@ -126,26 +126,26 @@ public class HotelServiceTests {
 
     @Test
     public void throwExceptionHotelNameNotFound(){
-        HotelService hotelServiceMock = mock(HotelService.class);
-        assertThrows(BusinessException.class, () -> hotelServiceMock.getHotelByName("test"));
+        Throwable thrown = assertThrows(BusinessException.class, () -> hotelService.getHotelByName("test"));
+        assertEquals("Hotel [test] not found", thrown.getMessage());
     }
 
     @Test
     public void throwExceptionHotelStarsNotFound(){
-        HotelService hotelServiceMock = mock(HotelService.class);
-        assertThrows(BusinessException.class, () -> hotelServiceMock.getHotelsByStars(7));
+        Throwable thrown = assertThrows(BusinessException.class, () -> hotelService.getHotelsByStars(7));
+        assertEquals("No hotels found with 7 stars", thrown.getMessage());
     }
 
     @Test
     public void throwExceptionHotelByCityNotFound(){
-        HotelService hotelServiceMock = mock(HotelService.class);
-        assertThrows(BusinessException.class, () -> hotelServiceMock.getHotelsByCity("test"));
+        Throwable thrown = assertThrows(BusinessException.class, () -> hotelService.getHotelsByCity("test"));
+        assertEquals("Hotel [test] not found", thrown.getMessage());
     }
 
-    @Test
-    public void throwExceptionHotelByCityAndStarsNotFound() {
-        HotelService hotelServiceMock = mock(HotelService.class);
-        assertThrows(BusinessException.class, () -> hotelServiceMock.getHotelByCityAndStars("test", 7));
-    }
+//    @Test
+//    public void throwExceptionHotelByCityAndStarsNotFound() {
+//        Throwable thrown = assertThrows(BusinessException.class, () -> hotelService.getHotelByCityAndStars("test", 100));
+//        assertEquals("Hotel [test] not found", thrown.getMessage());
+//    }
 
 }

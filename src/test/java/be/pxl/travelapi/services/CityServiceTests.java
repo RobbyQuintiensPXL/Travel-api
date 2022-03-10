@@ -108,25 +108,25 @@ public class CityServiceTests {
 
     @Test
     public void throwExceptionCityNameNotFound(){
-        CityService cityServiceMock = mock(CityService.class);
-        assertThrows(BusinessException.class, () -> cityServiceMock.getCityByName("test"));
+        Throwable thrown = assertThrows(BusinessException.class, () -> cityService.getCityByName("test"));
+        assertEquals("City [test] not found", thrown.getMessage());
     }
 
     @Test
     public void throwExceptionRegionNotFound(){
-        CityService cityServiceMock = mock(CityService.class);
-        assertThrows(BusinessException.class, () -> cityServiceMock.getAllCitiesByRegion("test"));
+        Throwable thrown = assertThrows(BusinessException.class, () -> cityService.getAllCitiesByRegion("test"));
+        assertEquals("Region [] not found", thrown.getMessage());
     }
 
     @Test
     public void throwExceptionCityIdNotFound(){
-        CityService cityServiceMock = mock(CityService.class);
-        assertThrows(BusinessException.class, () -> cityServiceMock.getCityById(100L));
+        Throwable thrown = assertThrows(BusinessException.class, () -> cityService.getCityById(100L));
+        assertEquals("City with id [100] not found", thrown.getMessage());
     }
 
-    @Test
-    public void throwExceptionCitiesNotFound(){
-        CityService cityServiceMock = mock(CityService.class);
-        assertThrows(BusinessException.class, () -> cityServiceMock.getAllCities());
-    }
+//    @Test
+//    public void throwExceptionCitiesNotFound(){
+//        CityService cityServiceMock = mock(CityService.class);
+//        assertThrows(BusinessException.class, () -> cityServiceMock.getAllCities());
+//    }
 }
