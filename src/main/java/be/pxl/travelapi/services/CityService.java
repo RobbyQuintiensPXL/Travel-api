@@ -2,10 +2,13 @@ package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CityDto;
 import be.pxl.travelapi.dto.CreateCityResource;
+import be.pxl.travelapi.dto.CreateImageResource;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
+import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CityRepository;
+import be.pxl.travelapi.repository.ImageRepository;
 import be.pxl.travelapi.repository.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +26,9 @@ public class CityService {
 
     @Autowired
     private RegionRepository regionRepository;
+
+    @Autowired
+    private ImageRepository imageRepository;
 
     private final static String NOT_FOUND = "] not found";
 
@@ -69,10 +75,18 @@ public class CityService {
             throw new BusinessException("City [" + cityResource.getCityName() + "] already listed.");
         }
 
+        CreateImageResource imageResource = new CreateImageResource(cityResource.getImage().getBytes(),
+                cityResource.getImage().getOriginalFilename());
+        Image image = new Image();
+        image.setContent(imageResource.getContent());
+        image.setName(imageResource.getName());
+
+        imageRepository.save(image);
+
         City city = new City();
         city.setCityName(cityResource.getCityName());
         city.setRegion(foundRegion.get());
-        city.setImage(cityResource.getImage().getBytes());
+        city.setImage(image);
         city.setTopDestination(cityResource.isTopDestination());
 
         cityRepository.save(city);

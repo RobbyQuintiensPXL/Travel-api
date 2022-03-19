@@ -17,13 +17,14 @@ public class City {
     @ManyToOne
     private Region region;
 
-    @Lob
-    private byte[] image;
+//    @Lob
+//    private byte[] image;
+
+    @ManyToOne
+    private Image image;
 
     @Column(name = "top_destination")
     boolean isTopDestination;
-
-    private String regionName;
 
     public City() {
         //Empty constructor
@@ -53,11 +54,20 @@ public class City {
         this.region = region;
     }
 
-    public byte[] getImage() {
+//    public byte[] getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(byte[] image) {
+//        this.image = image;
+//    }
+
+
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(Image image) {
         this.image = image;
     }
 
@@ -69,11 +79,4 @@ public class City {
         isTopDestination = topDestination;
     }
 
-    public String getRegionName() {
-        return regionName;
-    }
-
-    public void setRegionName(String regionName) {
-        this.regionName = region.getRegionName();
-    }
 }

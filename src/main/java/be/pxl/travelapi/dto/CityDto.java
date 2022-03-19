@@ -1,6 +1,7 @@
 package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.City;
+import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.models.Region;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -13,7 +14,7 @@ public class CityDto {
     private final Long id;
     private final String cityName;
     private final Region region;
-    private final byte[] image;
+    private final String cityImage;
     private final boolean topDestination;
     private final String regionName;
 
@@ -21,9 +22,10 @@ public class CityDto {
         this.id = city.getId();
         this.cityName = city.getCityName();
         this.region = city.getRegion();
-        this.image = city.getImage();
+//        this.image = city.getImage();
         this.topDestination = city.isTopDestination();
-        this.regionName = city.getRegionName();
+        this.regionName = city.getRegion().getRegionName();
+        this.cityImage = city.getImage().getName();
     }
 
     public Long getId() {
@@ -38,15 +40,15 @@ public class CityDto {
         return region;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
     public boolean isTopDestination() {
         return topDestination;
     }
 
     public String getRegionName() {
         return regionName;
+    }
+
+    public String getCityImage() {
+        return cityImage;
     }
 }
