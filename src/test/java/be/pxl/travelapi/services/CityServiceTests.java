@@ -5,6 +5,7 @@ import be.pxl.travelapi.dto.CreateCityResource;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
+import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.RegionRepository;
@@ -59,6 +60,9 @@ public class CityServiceTests {
     public void getCityByName(){
         City city = new City();
         city.setCityName("TestCity");
+        Image image = new Image();
+        image.setName("test.jpg");
+        city.setImage(image);
 
         when(cityRepository.findCityByCityName(any())).thenReturn(java.util.Optional.of(city));
 
@@ -70,6 +74,9 @@ public class CityServiceTests {
     @Test
     public void getCityById(){
         City city = new City();
+        Image image = new Image();
+        image.setName("test.jpg");
+        city.setImage(image);
 
         when(cityRepository.findCityById(any())).thenReturn(java.util.Optional.of(city));
 
@@ -82,6 +89,9 @@ public class CityServiceTests {
     public void getCitiesByRegion(){
         List<City> cityList = new LinkedList<>();
         City city = new City();
+        Image image = new Image();
+        image.setName("test.jpg");
+        city.setImage(image);
         cityList.add(city);
         when(cityRepository.findCitiesByRegion_RegionName(any())).thenReturn(cityList);
 

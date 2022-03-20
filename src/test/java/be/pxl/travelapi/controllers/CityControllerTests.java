@@ -4,6 +4,7 @@ import be.pxl.travelapi.dto.CityDto;
 import be.pxl.travelapi.dto.CreateCityResource;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
+import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.services.CityService;
 import com.fasterxml.jackson.databind.ObjectMapper; 
@@ -59,6 +60,9 @@ public class CityControllerTests {
         City city = new City();
         city.setCityName("TestCity");
         city.setTopDestination(true);
+        Image image = new Image();
+        image.setName("test.jpg");
+        city.setImage(image);
 
         List<CityDto> cityDtoList = Stream.of(city).map(CityDto::new).collect(Collectors.toList());
 
@@ -78,6 +82,9 @@ public class CityControllerTests {
         region.setRegionName("TestRegion");
         city.setCityName("TestCity");
         city.setRegion(region);
+        Image image = new Image();
+        image.setName("test.jpg");
+        city.setImage(image);
 
         List<CityDto> cityDtoList = Stream.of(city).map(CityDto::new).collect(Collectors.toList());
 
@@ -95,6 +102,9 @@ public class CityControllerTests {
         City city = new City();
         city.setId(1L);
         city.setCityName("TestCity");
+        Image image = new Image();
+        image.setName("test.jpg");
+        city.setImage(image);
         CityDto cityDto = new CityDto(city);
 
         given(cityService.getCityByName(city.getCityName())).willReturn(cityDto);
@@ -110,6 +120,9 @@ public class CityControllerTests {
         City city = new City();
         city.setCityName("TestCity");
         city.setId(1L);
+        Image image = new Image();
+        image.setName("test.jpg");
+        city.setImage(image);
         CityDto cityDto = new CityDto(city);
 
         given(cityService.getCityById(cityDto.getId())).willReturn(cityDto);

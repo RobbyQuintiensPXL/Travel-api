@@ -17,9 +17,6 @@ public class City {
     @ManyToOne
     private Region region;
 
-//    @Lob
-//    private byte[] image;
-
     @ManyToOne
     private Image image;
 
@@ -53,15 +50,6 @@ public class City {
     public void setRegion(Region region) {
         this.region = region;
     }
-
-//    public byte[] getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(byte[] image) {
-//        this.image = image;
-//    }
-
 
     public Image getImage() {
         return image;

@@ -16,15 +16,12 @@ public class CityDto {
     private final Region region;
     private final String cityImage;
     private final boolean topDestination;
-    private final String regionName;
 
     public CityDto(City city) {
         this.id = city.getId();
         this.cityName = city.getCityName();
         this.region = city.getRegion();
-//        this.image = city.getImage();
         this.topDestination = city.isTopDestination();
-        this.regionName = city.getRegion().getRegionName();
         this.cityImage = city.getImage().getName();
     }
 
@@ -42,10 +39,6 @@ public class CityDto {
 
     public boolean isTopDestination() {
         return topDestination;
-    }
-
-    public String getRegionName() {
-        return regionName;
     }
 
     public String getCityImage() {
