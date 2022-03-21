@@ -2,7 +2,6 @@ package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class HotelDto {
 

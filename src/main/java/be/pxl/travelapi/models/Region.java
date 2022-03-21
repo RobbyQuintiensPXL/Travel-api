@@ -1,7 +1,6 @@
 package be.pxl.travelapi.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Region {

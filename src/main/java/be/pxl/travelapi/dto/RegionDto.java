@@ -2,11 +2,6 @@ package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.Country;
 import be.pxl.travelapi.models.Region;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class RegionDto {
 
