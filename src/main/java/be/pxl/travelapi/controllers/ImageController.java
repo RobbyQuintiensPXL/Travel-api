@@ -3,14 +3,10 @@ package be.pxl.travelapi.controllers;
 import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import java.util.List;
 
 @RestController
 @RequestMapping("/images")
