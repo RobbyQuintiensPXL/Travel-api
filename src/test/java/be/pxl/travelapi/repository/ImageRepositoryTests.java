@@ -37,7 +37,7 @@ public class ImageRepositoryTests {
     public void persist(){
         image = new Image();
         image.setName("testImage.jpg");
-        image.setContent(any(byte[].class));
+//        image.setContent(any(byte[].class));
         entityManager.persist(image);
         entityManager.flush();
     }
@@ -48,6 +48,14 @@ public class ImageRepositoryTests {
         List<Image> imageList = imageRepository.findAll();
 
         assertThat(imageList).isNotEmpty();
+    }
+
+    @Test
+    public void showImageByName(){
+        persist();
+        Image image = imageRepository.findByName("testImage.jpg").get();
+
+        assertThat(image).isNotNull();
     }
 
 }
