@@ -1,7 +1,6 @@
 package be.pxl.travelapi.controllers;
 
 import be.pxl.travelapi.dto.ImageDto;
-import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

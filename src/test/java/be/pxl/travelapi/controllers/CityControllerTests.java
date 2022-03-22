@@ -1,40 +1,28 @@
 package be.pxl.travelapi.controllers;
 
 import be.pxl.travelapi.dto.CityDto;
-import be.pxl.travelapi.dto.CreateCityResource;
 import be.pxl.travelapi.models.City;
-import be.pxl.travelapi.models.Hotel;
 import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.services.CityService;
-import com.fasterxml.jackson.databind.ObjectMapper; 
-import org.junit.Assert;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.multipart.MultipartFile;
-import org.testcontainers.shaded.org.apache.commons.io.IOUtils;
+
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.mockito.ArgumentMatchers.any;
+
 import static org.hamcrest.CoreMatchers.is;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
