@@ -2,7 +2,6 @@ package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.CityDto;
 import be.pxl.travelapi.dto.CreateCityResource;
-import be.pxl.travelapi.dto.CreateImageResource;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Image;
@@ -10,7 +9,6 @@ import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.ImageRepository;
 import be.pxl.travelapi.repository.RegionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,19 +20,19 @@ import java.util.stream.Collectors;
 @Service
 public class CityService {
 
-    @Autowired
-    private CityRepository cityRepository;
-
-    @Autowired
-    private RegionRepository regionRepository;
-
-    @Autowired
-    private ImageRepository imageRepository;
-
-    @Autowired
-    private FileStorageService storageService;
+    private final CityRepository cityRepository;
+    private final RegionRepository regionRepository;
+    private final ImageRepository imageRepository;
+    private final FileStorageService storageService;
 
     private final static String NOT_FOUND = "] not found";
+
+    public CityService(CityRepository cityRepository, RegionRepository regionRepository, ImageRepository imageRepository, FileStorageService storageService) {
+        this.cityRepository = cityRepository;
+        this.regionRepository = regionRepository;
+        this.imageRepository = imageRepository;
+        this.storageService = storageService;
+    }
 
     public List<CityDto> getAllCities(){
         List<CityDto> cityDtoList = cityRepository.findAll().stream().map(CityDto::new).collect(Collectors.toList());

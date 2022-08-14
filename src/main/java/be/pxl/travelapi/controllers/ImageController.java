@@ -3,7 +3,6 @@ package be.pxl.travelapi.controllers;
 import be.pxl.travelapi.dto.ImageDto;
 import be.pxl.travelapi.services.FileStorageService;
 import be.pxl.travelapi.services.ImageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,11 +17,13 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:58272")
 public class ImageController {
 
-    @Autowired
-    private ImageService imageService;
+    private final ImageService imageService;
+    private final FileStorageService storageService;
 
-    @Autowired
-    private FileStorageService storageService;
+    public ImageController(ImageService imageService, FileStorageService storageService) {
+        this.imageService = imageService;
+        this.storageService = storageService;
+    }
 
     @GetMapping
     public ResponseEntity<List<ImageDto>> getImages(){

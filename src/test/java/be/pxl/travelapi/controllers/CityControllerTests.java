@@ -18,19 +18,16 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-
-import static org.hamcrest.Matchers.hasSize;
-
-import static org.hamcrest.CoreMatchers.is;
-
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -45,6 +42,22 @@ public class CityControllerTests {
     @MockBean
     private CityService cityService;
 
+    //TODO make global method
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static byte[] asBytesString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsBytes(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Test
     public void getAllCities() throws Exception {
@@ -60,7 +73,7 @@ public class CityControllerTests {
         given(cityService.getAllCities()).willReturn(cityDtoList);
 
         mvc.perform(get("/cities")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].cityName", is(city.getCityName())));
@@ -82,7 +95,7 @@ public class CityControllerTests {
         given(cityService.getAllCitiesByRegion(region.getRegionName())).willReturn(cityDtoList);
 
         mvc.perform(get("/cities/region/TestRegion")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].cityName", is(city.getCityName())));
@@ -101,9 +114,9 @@ public class CityControllerTests {
         given(cityService.getCityByName(city.getCityName())).willReturn(cityDto);
 
         mvc.perform(get("/cities/TestCity")
-        .contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$.cityName", is(city.getCityName())));
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.cityName", is(city.getCityName())));
     }
 
     @Test
@@ -119,7 +132,7 @@ public class CityControllerTests {
         given(cityService.getCityById(cityDto.getId())).willReturn(cityDto);
 
         mvc.perform(get("/cities/id/1")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(city.getId().intValue())));
     }
@@ -130,34 +143,17 @@ public class CityControllerTests {
 //        city.setCityName("TestCity");
 //        Region region = new Region();
 //        region.setRegionName("TestRegion");
-//        MockMultipartFile file = new MockMultipartFile("file","image.jpg",
+//        MockMultipartFile file = new MockMultipartFile("file", "image.jpg",
 //                MediaType.TEXT_PLAIN_VALUE, "test".getBytes(StandardCharsets.UTF_8));
 //        Image image = new Image();
 //        image.setName(file.getOriginalFilename());
 //        CreateCityResource cityResource = new CreateCityResource(city.getCityName(), region.getRegionName(), image.getName(), true);
 //
 //        mvc.perform(multipart("/cities").file(file)
-//                .content(asJsonString(cityResource.getCityName()))
-//                .content(asJsonString(cityResource.getRegion()))
-//                .content(asJsonString(cityResource.isTopDestination())))
+//                        .content(asJsonString(cityResource.getCityName()))
+//                        .content(asJsonString(cityResource.getRegion()))
+//                        .content(asJsonString(cityResource.getImage()))
+//                        .content(asJsonString(cityResource.isTopDestination())))
 //                .andExpect(status().isCreated());
 //    }
-
-    //TODO make global method
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static byte[] asBytesString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsBytes(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 }

@@ -5,7 +5,6 @@ import be.pxl.travelapi.dto.CreateCountryResource;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.Country;
 import be.pxl.travelapi.repository.CountryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +14,11 @@ import java.util.stream.Collectors;
 @Service
 public class CountryService {
 
-    @Autowired
-    private CountryRepository countryRepository;
+    private final CountryRepository countryRepository;
+
+    public CountryService(CountryRepository countryRepository) {
+        this.countryRepository = countryRepository;
+    }
 
     public List<CountryDto> listAllCountries() {
         List<CountryDto> countryDtoList = countryRepository.findAll().stream().map(CountryDto::new).collect(Collectors.toList());

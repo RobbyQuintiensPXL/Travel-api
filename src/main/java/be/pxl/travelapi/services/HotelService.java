@@ -9,7 +9,6 @@ import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.HotelRepository;
 import be.pxl.travelapi.repository.ImageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,19 +20,19 @@ import java.util.stream.Collectors;
 @Service
 public class HotelService {
 
-    @Autowired
-    private HotelRepository hotelRepository;
-
-    @Autowired
-    private CityRepository cityRepository;
-
-    @Autowired
-    private ImageRepository imageRepository;
-
-    @Autowired
-    private FileStorageService storageService;
+    private final HotelRepository hotelRepository;
+    private final CityRepository cityRepository;
+    private final ImageRepository imageRepository;
+    private final FileStorageService storageService;
 
     private final static String NOT_FOUND = "] not found";
+
+    public HotelService(HotelRepository hotelRepository, CityRepository cityRepository, ImageRepository imageRepository, FileStorageService storageService) {
+        this.hotelRepository = hotelRepository;
+        this.cityRepository = cityRepository;
+        this.imageRepository = imageRepository;
+        this.storageService = storageService;
+    }
 
     public List<HotelDto> getAllHotels() {
         List<HotelDto> hotelDtoList = hotelRepository.findAll().stream().map(HotelDto::new).collect(Collectors.toList());

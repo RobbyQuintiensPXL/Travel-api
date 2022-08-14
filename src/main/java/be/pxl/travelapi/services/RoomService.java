@@ -8,7 +8,6 @@ import be.pxl.travelapi.models.Room;
 import be.pxl.travelapi.models.RoomType;
 import be.pxl.travelapi.repository.HotelRepository;
 import be.pxl.travelapi.repository.RoomRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,13 +17,15 @@ import java.util.stream.Collectors;
 @Service
 public class RoomService {
 
-    @Autowired
-    private RoomRepository roomRepository;
-
-    @Autowired
-    private HotelRepository hotelRepository;
+    private final RoomRepository roomRepository;
+    private final HotelRepository hotelRepository;
 
     private final static String NOT_FOUND = "] not found";
+
+    public RoomService(RoomRepository roomRepository, HotelRepository hotelRepository) {
+        this.roomRepository = roomRepository;
+        this.hotelRepository = hotelRepository;
+    }
 
     public List<RoomDto> getAllRooms(){
         List<RoomDto> roomDtoList = roomRepository.findAll().stream().map(RoomDto::new).collect(Collectors.toList());

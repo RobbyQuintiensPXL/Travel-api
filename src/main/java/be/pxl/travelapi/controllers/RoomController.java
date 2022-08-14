@@ -2,7 +2,6 @@ package be.pxl.travelapi.controllers;
 
 import be.pxl.travelapi.dto.RoomDto;
 import be.pxl.travelapi.services.RoomService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +12,11 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:58272")
 public class RoomController {
 
-    @Autowired
-    private RoomService roomService;
+    private final RoomService roomService;
+
+    public RoomController(RoomService roomService) {
+        this.roomService = roomService;
+    }
 
     @GetMapping("/rooms")
     public ResponseEntity<List<RoomDto>> getAllRooms(){

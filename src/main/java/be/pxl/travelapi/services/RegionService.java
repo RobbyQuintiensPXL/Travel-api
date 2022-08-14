@@ -7,7 +7,6 @@ import be.pxl.travelapi.models.Country;
 import be.pxl.travelapi.models.Region;
 import be.pxl.travelapi.repository.CountryRepository;
 import be.pxl.travelapi.repository.RegionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +16,13 @@ import java.util.stream.Collectors;
 @Service
 public class RegionService {
 
-    @Autowired
-    private RegionRepository regionRepository;
+    private final RegionRepository regionRepository;
+    private final CountryRepository countryRepository;
 
-    @Autowired
-    private CountryRepository countryRepository;
+    public RegionService(RegionRepository regionRepository, CountryRepository countryRepository) {
+        this.regionRepository = regionRepository;
+        this.countryRepository = countryRepository;
+    }
 
     public List<RegionDto> listAllRegions(){
         List<RegionDto> regionDtoList = regionRepository.findAll().stream().map(RegionDto::new).collect(Collectors.toList());

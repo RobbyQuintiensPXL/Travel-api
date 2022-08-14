@@ -112,32 +112,32 @@ public class HotelServiceTests {
         assertTrue(hotelDtoList.size() >= 1);
     }
 
-//    @Test
-//    public void addHotel() throws IOException {
-//        Hotel hotel = new Hotel();
-//        City city = new City();
-//        city.setCityName("TestCity");
-//        Room room = new Room();
-//        room.setHotel(hotel);
-//        List<Room> roomList = new ArrayList<>();
-//        roomList.add(room);
-//        when(roomRepository.save(any(Room.class))).thenReturn(room);
-//        when(hotelRepository.save(any(Hotel.class))).thenReturn(hotel);
-//        when(cityRepository.findCityByCityName(any(String.class))).thenReturn(java.util.Optional.of(city));
-//        String hotelName = "hotelname.jpg";
-//        String roomOne = "roomOne.jpg";
-//        String roomTwo = "roomTwo.jpg";
-//
-//        MockMultipartFile fileHotel = new MockMultipartFile("user-file",hotelName,
-//                "text/plain", "test data".getBytes());
-//        MockMultipartFile fileRoomOne = new MockMultipartFile("user-file",roomOne,
-//                "text/plain", "test data".getBytes());
-//        MockMultipartFile fileRoomTwo = new MockMultipartFile("user-file",roomTwo,
-//                "text/plain", "test data".getBytes());
-//
-//        CreateHotelResource hotelResource = new CreateHotelResource(any(String.class), any(int.class), city.getCityName(), null, hotel.getRooms(), fileHotel, fileRoomOne, fileRoomTwo, true);
-//        hotelService.addHotel(hotelResource);
-//    }
+    @Test
+    public void addHotel() throws IOException {
+        Hotel hotel = new Hotel();
+        City city = new City();
+        city.setCityName("TestCity");
+        Room room = new Room();
+        room.setHotel(hotel);
+        List<Room> roomList = new ArrayList<>();
+        roomList.add(room);
+        when(roomRepository.save(any(Room.class))).thenReturn(room);
+        when(hotelRepository.save(any(Hotel.class))).thenReturn(hotel);
+        when(cityRepository.findCityByCityName(any(String.class))).thenReturn(java.util.Optional.of(city));
+        String hotelName = "hotelname.jpg";
+        String roomOne = "roomOne.jpg";
+        String roomTwo = "roomTwo.jpg";
+
+        MockMultipartFile fileHotel = new MockMultipartFile("user-file",hotelName,
+                "text/plain", "test data".getBytes());
+        MockMultipartFile fileRoomOne = new MockMultipartFile("user-file",roomOne,
+                "text/plain", "test data".getBytes());
+        MockMultipartFile fileRoomTwo = new MockMultipartFile("user-file",roomTwo,
+                "text/plain", "test data".getBytes());
+
+        CreateHotelResource hotelResource = new CreateHotelResource(any(String.class), any(int.class), city.getCityName(), null, hotel.getRooms(), fileHotel.getName(), fileRoomOne, fileRoomTwo, true);
+        hotelService.addHotel(hotelResource, fileHotel);
+    }
 
     @Test
     public void throwExceptionHotelNameNotFound(){

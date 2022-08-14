@@ -2,9 +2,7 @@ package be.pxl.travelapi.services;
 
 import be.pxl.travelapi.dto.ImageDto;
 import be.pxl.travelapi.exception.BusinessException;
-import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.repository.ImageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +12,11 @@ import java.util.stream.Collectors;
 @Service
 public class ImageService {
 
-    @Autowired
-    private ImageRepository imageRepository;
+    private final ImageRepository imageRepository;
+
+    public ImageService(ImageRepository imageRepository) {
+        this.imageRepository = imageRepository;
+    }
 
     public List<ImageDto> getImages(){
         List<ImageDto> imageDtoList = imageRepository.findAll().stream().map(ImageDto::new).collect(Collectors.toList());

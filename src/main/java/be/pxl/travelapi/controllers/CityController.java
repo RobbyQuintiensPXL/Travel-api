@@ -4,7 +4,6 @@ import be.pxl.travelapi.dto.CityDto;
 import be.pxl.travelapi.dto.CreateCityResource;
 import be.pxl.travelapi.services.CityService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +18,11 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:58272")
 public class CityController {
 
-    @Autowired
-    private CityService cityService;
+    private final CityService cityService;
+
+    public CityController(CityService cityService) {
+        this.cityService = cityService;
+    }
 
     @GetMapping
     @ApiOperation(value = "cities")
@@ -47,9 +49,9 @@ public class CityController {
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
-    @PostMapping(consumes = { "multipart/form-data" })
-    public ResponseEntity<Void> addCity(@ModelAttribute @Valid CreateCityResource cityResource, MultipartFile image) throws IOException {
-        cityService.addCity(cityResource, image);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+//    @PostMapping( consumes = {"*/*"})
+//    public ResponseEntity<Void> addCity(@ModelAttribute @Valid CreateCityResource cityResource, @RequestPart MultipartFile image) throws IOException {
+//        cityService.addCity(cityResource, image);
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 }
