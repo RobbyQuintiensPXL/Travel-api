@@ -6,12 +6,10 @@ public class ImageDto {
 
     private final Long id;
     private final String name;
-    private final byte[] content;
 
     public ImageDto(Image image){
         this.id = image.getId();
         this.name = image.getName();
-        this.content = image.getContent();
     }
 
     public Long getId() {
@@ -20,9 +18,5 @@ public class ImageDto {
 
     public String getName() {
         return name;
-    }
-
-    public byte[] getContent() {
-        return content;
     }
 }

@@ -12,6 +12,7 @@ import be.pxl.travelapi.repository.ImageRepository;
 import be.pxl.travelapi.repository.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,6 +30,9 @@ public class CityService {
 
     @Autowired
     private ImageRepository imageRepository;
+
+    @Autowired
+    private FileStorageService storageService;
 
     private final static String NOT_FOUND = "] not found";
 
@@ -64,7 +68,7 @@ public class CityService {
         return cityDto.get();
     }
 
-    public void addCity(CreateCityResource cityResource) throws IOException {
+    public void addCity(CreateCityResource cityResource, MultipartFile image) throws IOException {
         Optional<Region> foundRegion = regionRepository.findRegionByRegionName(cityResource.getRegion());
         if(foundRegion.isEmpty()){
             throw new BusinessException("Region [" + cityResource.getRegion() + NOT_FOUND);
@@ -75,20 +79,18 @@ public class CityService {
             throw new BusinessException("City [" + cityResource.getCityName() + "] already listed.");
         }
 
-        CreateImageResource imageResource = new CreateImageResource(cityResource.getImage().getBytes(),
-                cityResource.getImage().getOriginalFilename());
-        Image image = new Image();
-        image.setContent(imageResource.getContent());
-        image.setName(imageResource.getName());
+        Image newImage = new Image();
+        newImage.setName(image.getOriginalFilename());
 
-        imageRepository.save(image);
+        imageRepository.save(newImage);
 
         City city = new City();
         city.setCityName(cityResource.getCityName());
         city.setRegion(foundRegion.get());
-        city.setImage(image);
+        city.setImage(newImage);
         city.setTopDestination(cityResource.isTopDestination());
 
         cityRepository.save(city);
+        storageService.save(image);
     }
 }

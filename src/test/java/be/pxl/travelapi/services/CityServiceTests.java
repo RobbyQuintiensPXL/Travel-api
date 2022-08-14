@@ -99,19 +99,19 @@ public class CityServiceTests {
         assertEquals(1, cityDtoList.size());
     }
 
-    @Test
-    public void addCity() throws IOException {
-        City newCity = new City();
-        Region region = new Region();
-        region.setRegionName("Limburg");
-        when(cityRepository.save(any(City.class))).thenReturn(newCity);
-        when(regionRepository.findRegionByRegionName(anyString())).thenReturn(java.util.Optional.of(region));
-        String fileName = "test.jpg";
-        MockMultipartFile file = new MockMultipartFile("user-file",fileName,
-                "text/plain", "test data".getBytes());
-        CreateCityResource cityResource = new CreateCityResource(newCity.getCityName(), region.getRegionName(), file , false);
-        cityService.addCity(cityResource);
-    }
+//    @Test
+//    public void addCity() throws IOException {
+//        City newCity = new City();
+//        Region region = new Region();
+//        region.setRegionName("Limburg");
+//        when(cityRepository.save(any(City.class))).thenReturn(newCity);
+//        when(regionRepository.findRegionByRegionName(anyString())).thenReturn(java.util.Optional.of(region));
+//        String fileName = "test.jpg";
+//        MockMultipartFile file = new MockMultipartFile("user-file",fileName,
+//                "text/plain", "test data".getBytes());
+//        CreateCityResource cityResource = new CreateCityResource(newCity.getCityName(), region.getRegionName(), file , false);
+//        cityService.addCity(cityResource);
+//    }
 
     @Test
     public void throwExceptionCityNameNotFound(){

@@ -9,9 +9,6 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Lob
-    private byte[] content;
-
     @Column(unique = true)
     private String name;
 
@@ -25,14 +22,6 @@ public class Image {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public byte[] getContent() {
-        return content;
-    }
-
-    public void setContent(byte[] content) {
-        this.content = content;
     }
 
     public String getName() {

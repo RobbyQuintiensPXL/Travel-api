@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cities")
-@CrossOrigin(origins = "http://localhost:53403")
+@CrossOrigin(origins = "http://localhost:58272")
 public class CityController {
 
     @Autowired
@@ -46,10 +46,10 @@ public class CityController {
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
-    @PostMapping(consumes = { "multipart/form-data" })
-    public ResponseEntity<Void> addCity(@ModelAttribute @Valid CreateCityResource cityResource) throws IOException {
-        cityService.addCity(cityResource);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+//    @PostMapping(consumes = { "multipart/form-data" })
+//    public ResponseEntity<Void> addCity(@ModelAttribute @Valid CreateCityResource cityResource) throws IOException {
+//        cityService.addCity(cityResource);
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
 }

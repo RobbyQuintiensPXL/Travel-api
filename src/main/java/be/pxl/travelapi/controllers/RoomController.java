@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:53403")
+@CrossOrigin(origins = "http://localhost:58272")
 public class RoomController {
 
     @Autowired
