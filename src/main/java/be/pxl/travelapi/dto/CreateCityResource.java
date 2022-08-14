@@ -10,11 +10,11 @@ public class CreateCityResource {
 
     @NotNull
     private final String region;
-    private final Image image;
+    private final String image;
     private final boolean topDestination;
 
     public CreateCityResource(@NotNull String cityName, @NotNull String region,
-                              Image image, boolean topDestination){
+                              String image, boolean topDestination){
         this.cityName = cityName;
         this.region = region;
         this.topDestination = topDestination;
@@ -33,7 +33,7 @@ public class CreateCityResource {
         return topDestination;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 }

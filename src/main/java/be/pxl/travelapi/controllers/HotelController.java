@@ -57,11 +57,11 @@ public class HotelController {
         return new ResponseEntity<>(hotelDtoList, HttpStatus.OK);
     }
 
-    @PostMapping(consumes = { "multipart/form-data" })
-    public ResponseEntity<Void> addHotel(@ModelAttribute @Valid CreateHotelResource hotelResource) throws IOException {
-        hotelService.addHotel(hotelResource);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+//    @PostMapping(consumes = { "multipart/form-data" })
+//    public ResponseEntity<Void> addHotel(@ModelAttribute @Valid CreateHotelResource hotelResource) throws IOException {
+//        hotelService.addHotel(hotelResource);
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
     @GetMapping("/{hotelid}/rooms")
     public ResponseEntity<List<RoomDto>> getRoomsByHotel(@PathVariable("hotelid") Long id){

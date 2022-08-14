@@ -1,6 +1,7 @@
 package be.pxl.travelapi.controllers;
 
 import be.pxl.travelapi.dto.CityDto;
+import be.pxl.travelapi.dto.CreateCityResource;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.models.Region;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,6 +23,7 @@ import static org.hamcrest.Matchers.hasSize;
 
 import static org.hamcrest.CoreMatchers.is;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import java.util.stream.Collectors;
@@ -129,7 +132,9 @@ public class CityControllerTests {
 //        region.setRegionName("TestRegion");
 //        MockMultipartFile file = new MockMultipartFile("file","image.jpg",
 //                MediaType.TEXT_PLAIN_VALUE, "test".getBytes(StandardCharsets.UTF_8));
-//        CreateCityResource cityResource = new CreateCityResource(city.getCityName(), region.getRegionName(), file , true);
+//        Image image = new Image();
+//        image.setName(file.getOriginalFilename());
+//        CreateCityResource cityResource = new CreateCityResource(city.getCityName(), region.getRegionName(), image.getName(), true);
 //
 //        mvc.perform(multipart("/cities").file(file)
 //                .content(asJsonString(cityResource.getCityName()))

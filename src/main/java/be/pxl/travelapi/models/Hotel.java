@@ -23,9 +23,8 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel")
     private List<Room> rooms;
 
-    @Lob
-    @Column(name = "image_hotel")
-    private byte[] imageHotel;
+    @ManyToOne
+    private Image imageHotel;
 
     @Lob
     @Column(name = "image_room_one")
@@ -90,11 +89,11 @@ public class Hotel {
         this.rooms = rooms;
     }
 
-    public byte[] getImageHotel() {
+    public Image getImageHotel() {
         return imageHotel;
     }
 
-    public void setImageHotel(byte[] imageHotel) {
+    public void setImageHotel(Image imageHotel) {
         this.imageHotel = imageHotel;
     }
 

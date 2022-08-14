@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -46,10 +47,9 @@ public class CityController {
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
-//    @PostMapping(consumes = { "multipart/form-data" })
-//    public ResponseEntity<Void> addCity(@ModelAttribute @Valid CreateCityResource cityResource) throws IOException {
-//        cityService.addCity(cityResource);
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//    }
-
+    @PostMapping(consumes = { "multipart/form-data" })
+    public ResponseEntity<Void> addCity(@ModelAttribute @Valid CreateCityResource cityResource, MultipartFile image) throws IOException {
+        cityService.addCity(cityResource, image);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

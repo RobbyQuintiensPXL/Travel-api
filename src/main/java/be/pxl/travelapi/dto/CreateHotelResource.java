@@ -1,5 +1,6 @@
 package be.pxl.travelapi.dto;
 
+import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.models.Room;
 import javax.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,13 +18,13 @@ public class CreateHotelResource {
     @NotNull
     private final String address;
     private final List<Room> rooms;
-    private final MultipartFile imageHotel;
+    private final Image imageHotel;
     private final MultipartFile imageRoomOne;
     private final MultipartFile imageRoomTwo;
     private final boolean isTopHotel;
 
     public CreateHotelResource(@NotNull String hotelName, @NotNull int stars, @NotNull String city,
-                               @NotNull String address, List<Room> rooms, MultipartFile imageHotel,
+                               @NotNull String address, List<Room> rooms, Image imageHotel,
                                MultipartFile imageRoomOne, MultipartFile imageRoomTwo, boolean isTopHotel) {
         this.hotelName = hotelName;
         this.stars = stars;
@@ -56,7 +57,7 @@ public class CreateHotelResource {
         return rooms;
     }
 
-    public MultipartFile getImageHotel() {
+    public Image getImageHotel() {
         return imageHotel;
     }
 

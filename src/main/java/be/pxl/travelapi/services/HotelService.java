@@ -5,10 +5,13 @@ import be.pxl.travelapi.dto.HotelDto;
 import be.pxl.travelapi.exception.BusinessException;
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
+import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.repository.CityRepository;
 import be.pxl.travelapi.repository.HotelRepository;
+import be.pxl.travelapi.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,6 +26,12 @@ public class HotelService {
 
     @Autowired
     private CityRepository cityRepository;
+
+    @Autowired
+    private ImageRepository imageRepository;
+
+    @Autowired
+    private FileStorageService storageService;
 
     private final static String NOT_FOUND = "] not found";
 
@@ -62,7 +71,7 @@ public class HotelService {
         return hotelRepository.findHotelsByCity_CityNameAndStars(cityName, stars).stream().map(HotelDto::new).collect(Collectors.toList());
     }
 
-    public void addHotel(CreateHotelResource hotelResource) throws IOException {
+    public void addHotel(CreateHotelResource hotelResource, MultipartFile image) throws IOException {
         Optional<Hotel> foundHotel = hotelRepository.findHotelByHotelNameAndCity_CityName(hotelResource.getHotelName(), hotelResource.getCity());
         if (foundHotel.isPresent()) {
             throw new BusinessException("Hotel [" + hotelResource.getHotelName() + "] already listed in [" + hotelResource.getCity() + "].");
@@ -72,15 +81,22 @@ public class HotelService {
             throw new BusinessException("City [" + hotelResource.getCity() + NOT_FOUND);
         }
 
+        Image newImage = new Image();
+        newImage.setName(image.getOriginalFilename());
+
+        imageRepository.save(newImage);
+
         Hotel hotel = new Hotel();
         hotel.setHotelName(hotelResource.getHotelName());
         hotel.setStars(hotelResource.getStars());
         hotel.setAddress(hotelResource.getAddress());
         hotel.setCity(foundCity.get());
-        hotel.setImageHotel(hotelResource.getImageHotel().getBytes());
+        hotel.setImageHotel(newImage);
         hotel.setImageRoomOne(hotelResource.getImageRoomOne().getBytes());
         hotel.setImageRoomTwo(hotelResource.getImageRoomTwo().getBytes());
         hotel.setTopHotel(hotelResource.isTopHotel());
+
         hotelRepository.save(hotel);
+        storageService.save(image);
     }
 }

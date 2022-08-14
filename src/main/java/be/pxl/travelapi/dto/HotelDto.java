@@ -2,6 +2,7 @@ package be.pxl.travelapi.dto;
 
 import be.pxl.travelapi.models.City;
 import be.pxl.travelapi.models.Hotel;
+import be.pxl.travelapi.models.Image;
 
 public class HotelDto {
 
@@ -9,7 +10,7 @@ public class HotelDto {
     private final int stars;
     private final City city;
     private final String address;
-    private final byte[] imageHotel;
+    private final String imageHotel;
     private final byte[] imageRoomOne;
     private final byte[] imageRoomTwo;
     private final boolean isTopHotel;
@@ -19,7 +20,7 @@ public class HotelDto {
         this.stars = hotel.getStars();
         this.city = hotel.getCity();
         this.address = hotel.getAddress();
-        this.imageHotel = hotel.getImageHotel();
+        this.imageHotel = hotel.getImageHotel().getName();
         this.imageRoomOne = hotel.getImageRoomOne();
         this.imageRoomTwo = hotel.getImageRoomTwo();
         this.isTopHotel = hotel.isTopHotel();
@@ -41,7 +42,7 @@ public class HotelDto {
         return address;
     }
 
-    public byte[] getImageHotel() {
+    public String getImageHotel() {
         return imageHotel;
     }
 
