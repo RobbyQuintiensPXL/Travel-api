@@ -1,9 +1,16 @@
 package be.pxl.travelapi.models;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Hotel {
 
     @Id
@@ -36,88 +43,4 @@ public class Hotel {
 
     @Column(name = "is_top_hotel")
     private boolean isTopHotel;
-
-    public Hotel() {
-        //Empty constructor
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getHotelName() {
-        return hotelName;
-    }
-
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
-    }
-
-    public int getStars() {
-        return stars;
-    }
-
-    public void setStars(int stars) {
-        this.stars = stars;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public List<Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRoomSet(List<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    public Image getImageHotel() {
-        return imageHotel;
-    }
-
-    public void setImageHotel(Image imageHotel) {
-        this.imageHotel = imageHotel;
-    }
-
-    public byte[] getImageRoomOne() {
-        return imageRoomOne;
-    }
-
-    public void setImageRoomOne(byte[] imageRoomOne) {
-        this.imageRoomOne = imageRoomOne;
-    }
-
-    public byte[] getImageRoomTwo() {
-        return imageRoomTwo;
-    }
-
-    public void setImageRoomTwo(byte[] imageRoomTwo) {
-        this.imageRoomTwo = imageRoomTwo;
-    }
-
-    public boolean isTopHotel() {
-        return isTopHotel;
-    }
-
-    public void setTopHotel(boolean topHotel) {
-        isTopHotel = topHotel;
-    }
 }

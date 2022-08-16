@@ -1,9 +1,16 @@
 package be.pxl.travelapi.models;
 
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class City {
 
     @Id
@@ -21,49 +28,4 @@ public class City {
 
     @Column(name = "top_destination")
     boolean isTopDestination;
-
-    public City() {
-        //Empty constructor
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
-    public boolean isTopDestination() {
-        return isTopDestination;
-    }
-
-    public void setTopDestination(boolean topDestination) {
-        isTopDestination = topDestination;
-    }
-
 }
