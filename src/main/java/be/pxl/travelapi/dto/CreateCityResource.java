@@ -1,8 +1,7 @@
 package be.pxl.travelapi.dto;
 
-import be.pxl.travelapi.models.Image;
-import org.springframework.web.multipart.MultipartFile;
 import javax.validation.constraints.NotNull;
+
 public class CreateCityResource {
 
     @NotNull
@@ -14,7 +13,7 @@ public class CreateCityResource {
     private final boolean topDestination;
 
     public CreateCityResource(@NotNull String cityName, @NotNull String region,
-                              String image, boolean topDestination){
+                              String image, boolean topDestination) {
         this.cityName = cityName;
         this.region = region;
         this.topDestination = topDestination;

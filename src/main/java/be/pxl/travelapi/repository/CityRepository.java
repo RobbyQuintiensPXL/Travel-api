@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface CityRepository extends JpaRepository<City, Long> {
 
     Optional<City> findCityByCityName(String cityName);
+
     Optional<City> findCityById(Long id);
+
     List<City> findCitiesByRegion_RegionName(String regionName);
 }

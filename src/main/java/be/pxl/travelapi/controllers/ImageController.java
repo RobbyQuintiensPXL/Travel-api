@@ -26,13 +26,13 @@ public class ImageController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ImageDto>> getImages(){
+    public ResponseEntity<List<ImageDto>> getImages() {
         List<ImageDto> imageDtoList = imageService.getImages();
         return new ResponseEntity<>(imageDtoList, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{imageName}")
-    public ResponseEntity<Resource> getImageByName(@PathVariable("imageName") String filename){
+    public ResponseEntity<Resource> getImageByName(@PathVariable("imageName") String filename) {
         Resource image = storageService.load(filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + image.getFilename() + "\"").body(image);

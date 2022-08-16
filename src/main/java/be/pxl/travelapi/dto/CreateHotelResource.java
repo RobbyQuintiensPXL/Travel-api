@@ -1,10 +1,9 @@
 package be.pxl.travelapi.dto;
 
-import be.pxl.travelapi.models.Image;
 import be.pxl.travelapi.models.Room;
-import javax.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class CreateHotelResource {
@@ -69,7 +68,7 @@ public class CreateHotelResource {
         return imageRoomTwo;
     }
 
-        public boolean isTopHotel() {
+    public boolean isTopHotel() {
         return isTopHotel;
     }
 }

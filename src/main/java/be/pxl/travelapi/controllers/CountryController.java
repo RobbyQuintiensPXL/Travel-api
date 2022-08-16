@@ -34,7 +34,7 @@ public class CountryController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> addCountry(@RequestBody @Valid CreateCountryResource countryResource){
+    public ResponseEntity<Void> addCountry(@RequestBody @Valid CreateCountryResource countryResource) {
         countryService.addCountry(countryResource);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -4,7 +4,9 @@ import be.pxl.travelapi.dto.RoomDto;
 import be.pxl.travelapi.services.RoomService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class RoomController {
     }
 
     @GetMapping("/rooms")
-    public ResponseEntity<List<RoomDto>> getAllRooms(){
+    public ResponseEntity<List<RoomDto>> getAllRooms() {
         List<RoomDto> roomDtos = roomService.getAllRooms();
         return new ResponseEntity<>(roomDtos, HttpStatus.OK);
     }

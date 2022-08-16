@@ -22,25 +22,25 @@ public class RegionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RegionDto>> getAllRegions(){
+    public ResponseEntity<List<RegionDto>> getAllRegions() {
         List<RegionDto> regionList = regionService.listAllRegions();
         return new ResponseEntity<>(regionList, HttpStatus.OK);
     }
 
     @GetMapping("/country/{countryCode}")
-    public ResponseEntity<List<RegionDto>> getRegionsByCountry(@PathVariable("countryCode")String countryCode){
+    public ResponseEntity<List<RegionDto>> getRegionsByCountry(@PathVariable("countryCode") String countryCode) {
         List<RegionDto> regionList = regionService.listRegionsByCountry(countryCode);
         return new ResponseEntity<>(regionList, HttpStatus.OK);
     }
 
     @GetMapping("/{regionName}")
-    public ResponseEntity<RegionDto> getRegionByName(@PathVariable("regionName") String regionName){
+    public ResponseEntity<RegionDto> getRegionByName(@PathVariable("regionName") String regionName) {
         RegionDto regionDto = regionService.getRegionByName(regionName);
         return new ResponseEntity<>(regionDto, HttpStatus.OK);
     }
-    
+
     @PostMapping
-    public ResponseEntity<Void> addRegion(@RequestBody @Valid CreateRegionResource regionResource){
+    public ResponseEntity<Void> addRegion(@RequestBody @Valid CreateRegionResource regionResource) {
         regionService.addRegion(regionResource);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
