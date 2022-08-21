@@ -14,6 +14,7 @@ public class HotelDto {
     private final byte[] imageRoomOne;
     private final byte[] imageRoomTwo;
     private final boolean isTopHotel;
+    private final double price;
 
     public HotelDto(Hotel hotel){
         this.hotelName = hotel.getHotelName();
@@ -24,6 +25,7 @@ public class HotelDto {
         this.imageRoomOne = hotel.getImageRoomOne();
         this.imageRoomTwo = hotel.getImageRoomTwo();
         this.isTopHotel = hotel.isTopHotel();
+        this.price = hotel.getPrice();
     }
 
     public String getHotelName() {
@@ -56,5 +58,9 @@ public class HotelDto {
 
     public boolean isTopHotel() {
         return isTopHotel;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }

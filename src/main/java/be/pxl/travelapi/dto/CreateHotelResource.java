@@ -21,10 +21,11 @@ public class CreateHotelResource {
     private final MultipartFile imageRoomOne;
     private final MultipartFile imageRoomTwo;
     private final boolean isTopHotel;
+    private final double price;
 
     public CreateHotelResource(@NotNull String hotelName, @NotNull int stars, @NotNull String city,
                                @NotNull String address, List<Room> rooms, String imageHotel,
-                               MultipartFile imageRoomOne, MultipartFile imageRoomTwo, boolean isTopHotel) {
+                               MultipartFile imageRoomOne, MultipartFile imageRoomTwo, boolean isTopHotel, double price) {
         this.hotelName = hotelName;
         this.stars = stars;
         this.city = city;
@@ -34,6 +35,7 @@ public class CreateHotelResource {
         this.imageRoomOne = imageRoomOne;
         this.imageRoomTwo = imageRoomTwo;
         this.isTopHotel = isTopHotel;
+        this.price = price;
     }
 
     public String getHotelName() {
@@ -70,5 +72,9 @@ public class CreateHotelResource {
 
     public boolean isTopHotel() {
         return isTopHotel;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }

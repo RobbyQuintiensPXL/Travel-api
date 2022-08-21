@@ -43,4 +43,6 @@ public class Hotel {
 
     @Column(name = "is_top_hotel")
     private boolean isTopHotel;
+
+    private double price;
 }
